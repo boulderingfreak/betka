@@ -1,10 +1,23 @@
+// feat:     nowa funkcjonalność
+// fix:      naprawa buga
+// style:    zmiana wyglądu/CSS
+// refactor: reorganizacja kodu bez zmiany działania
+// chore:    konfiguracja, zależności, pliki pomocnicze
+// docs:     dokumentacja
+
 // git add .
-// git commit -m "what I did"
+// git commit -m "chore: add videos folder with example mp4"
 // git push
 
 //* 13.06 - betka
+//* -dodać font
 
-// -dodać font
+//TODO:
+// -label "ostatnio dodane"
+// -stworzyć komponent "boulderCard" (4)
+// -bottom navigation
+// -poprawić logo
+// -poprawić filtry
 
 import { StyleSheet, View, Image, Text } from "react-native";
 import { theme } from "../styles/theme";
@@ -33,10 +46,9 @@ export default function MainBetka() {
 
   return (
     <View style={styles.background}>
-      <View style={styles.header}>
-        <View style={styles}></View>
+      <View style={styles.headerBox}>
         <Image
-          style={styles.image}
+          style={styles.logo}
           source={require("../assets/img/betka_logo_dark.png")}
         />
         <Text style={styles.headerText}>betka</Text>
@@ -55,20 +67,23 @@ export default function MainBetka() {
           <Entypo name="map" size={24} color="black" />
         </View>
       </View>
-      {/* <View style={styles.header}>
+      <View style={styles.recentlyAddBox}>
+        <Text style={styles.recentlyAddText}>Ostatnio dodane</Text>
+      </View>
+      {/* <View style={styles.headerBox}>
         <Text style={styles.headerText}>Latest Bouldersaaa</Text>
       </View>
       <View style={styles.latestBoulders}>
         <Image
-          style={styles.image}
+          style={styles.logo}
           source={require("../assets/img/miniatures/fiolet.png")}
         />
         <Image
-          style={styles.image}
+          style={styles.logo}
           source={require("../assets/img/miniatures/fiolet.png")}
         />
         <Image
-          style={styles.image}
+          style={styles.logo}
           source={require("../assets/img/miniatures/fiolet.png")}
         />
       </View> */}
@@ -85,7 +100,7 @@ const styles = StyleSheet.create({
     // alignItems: "stretch",
     // justifyContent: "center",
   },
-  header: {
+  headerBox: {
     // backgroundColor: "pink",
     flexDirection: "row",
     alignItems: "center",
@@ -93,9 +108,9 @@ const styles = StyleSheet.create({
   headerText: {
     // color: "white",
     fontSize: 42,
-    fontFamily: "BarlowCondensed-Black",
+    fontFamily: "BarlowCondensed-Regular",
   },
-  image: {
+  logo: {
     height: 100,
     width: 100,
     resizeMode: "stretch",
@@ -107,6 +122,13 @@ const styles = StyleSheet.create({
     height: 60,
     // gap: 6,
     // height: "10%",
+  },
+  recentlyAddBox: {
+    backgroundColor: "pink",
+  },
+  recentlyAddText: {
+    fontSize: 28,
+    fontFamily: "BarlowCondensed-Regular",
   },
   latestBoulders: {
     backgroundColor: "lightgray",

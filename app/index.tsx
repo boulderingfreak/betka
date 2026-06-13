@@ -2,22 +2,44 @@
 // git commit -m "what I did"
 // git push
 
-//* 12.06 - betka
+//* 13.06 - betka
+
+// -dodać font
 
 import { StyleSheet, View, Image, Text } from "react-native";
 import { theme } from "../styles/theme";
 import DropdownComponent from "../components/dropdownmenu";
 import Entypo from "@expo/vector-icons/Entypo";
+import * as SplashScreen from "expo-splash-screen";
+import { useFonts } from "expo-font";
+import { useEffect } from "react";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function MainBetka() {
+  const [loaded, error] = useFonts({
+    "BarlowCondensed-Regular": require("../assets/fonts/Barlow/Condensed/BarlowCondensed-Regular.ttf"),
+  });
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
+
   return (
     <View style={styles.background}>
       <View style={styles.header}>
+        <View style={styles}></View>
         <Image
           style={styles.image}
           source={require("../assets/img/betka_logo_dark.png")}
         />
-        <Text>betka</Text>
+        <Text style={styles.headerText}>betka</Text>
       </View>
       <View style={styles.dropDownMenuBox}>
         <View style={{ width: "32%", height: 10, backgroundColor: "pink" }}>
@@ -64,17 +86,14 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   header: {
-    backgroundColor: "pink",
+    // backgroundColor: "pink",
     flexDirection: "row",
+    alignItems: "center",
   },
   headerText: {
-    color: "white",
-    fontSize: 28,
-    borderWidth: 5,
-    borderColor: "red",
-    textShadowColor: "red",
-    textShadowOffset: { width: 5, height: 5 },
-    textShadowRadius: 10,
+    // color: "white",
+    fontSize: 42,
+    fontFamily: "BarlowCondensed-Black",
   },
   image: {
     height: 100,

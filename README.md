@@ -1,2 +1,2 @@
 # betka
-# React Native app for sharing bouldering videos
+React Native app for sharing bouldering videos

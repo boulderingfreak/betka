@@ -13,7 +13,7 @@
 //* -dodać font
 
 //TODO:
-// -label "ostatnio dodane"
+//* -label "ostatnio dodane"
 // -stworzyć komponent "boulderCard" (4)
 // -bottom navigation
 // -poprawić logo
@@ -21,11 +21,12 @@
 
 import { StyleSheet, View, Image, Text } from "react-native";
 import { theme } from "../styles/theme";
-import DropdownComponent from "../components/dropdownmenu";
+import DropdownComponent from "../components/DropDownMenu";
 import Entypo from "@expo/vector-icons/Entypo";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
+import BoulderCard from "../components/BoulderCard";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -69,6 +70,12 @@ export default function MainBetka() {
       </View>
       <View style={styles.recentlyAddBox}>
         <Text style={styles.recentlyAddText}>Ostatnio dodane</Text>
+      </View>
+      <View style={styles.boulderCardsBox}>
+        <BoulderCard />
+        <BoulderCard />
+        <BoulderCard />
+        <BoulderCard />
       </View>
       {/* <View style={styles.headerBox}>
         <Text style={styles.headerText}>Latest Bouldersaaa</Text>
@@ -136,5 +143,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 30,
     // height: "70%",
+  },
+  boulderCardsBox: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginTop: 16,
+    marginBottom: 16,
+    gap: 16,
+    justifyContent: "center",
   },
 });

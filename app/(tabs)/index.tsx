@@ -14,43 +14,45 @@
 
 //TODO:
 //* -label "ostatnio dodane"
-// -stworzyć komponent "boulderCard" (4)
-// -bottom navigation
+//* -stworzyć komponent "boulderCard" (4)
+//* -naprawić (Tabs) - probuje wstrzymać custom czcionkę najpierw
+//* -https://docs.expo.dev/router/advanced/tabs/ -> tutaj mam odpowiedz na buga, brakuje jednego pliku layout
+// -add example bottom navigation
 // -poprawić logo
 // -poprawić filtry
 
 import { StyleSheet, View, Image, Text } from "react-native";
-import { theme } from "../styles/theme";
-import DropdownComponent from "../components/DropDownMenu";
+import { theme } from "../../styles/theme";
+import DropdownComponent from "../../components/DropDownMenu";
 import Entypo from "@expo/vector-icons/Entypo";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
-import BoulderCard from "../components/BoulderCard";
+import BoulderCard from "../../components/BoulderCard";
 
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
 
 export default function MainBetka() {
-  const [loaded, error] = useFonts({
-    "BarlowCondensed-Regular": require("../assets/fonts/Barlow/Condensed/BarlowCondensed-Regular.ttf"),
-  });
+  // const [loaded, error] = useFonts({
+  //   "BarlowCondensed-Regular": require("../assets/fonts/Barlow/Condensed/BarlowCondensed-Regular.ttf"),
+  // });
 
-  useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded, error]);
+  // useEffect(() => {
+  //   if (loaded || error) {
+  //     SplashScreen.hideAsync();
+  //   }
+  // }, [loaded, error]);
 
-  if (!loaded && !error) {
-    return null;
-  }
+  // if (!loaded && !error) {
+  //   return null;
+  // }
 
   return (
     <View style={styles.background}>
       <View style={styles.headerBox}>
         <Image
           style={styles.logo}
-          source={require("../assets/img/betka_logo_dark.png")}
+          source={require("../../assets/img/betka_logo_dark.png")}
         />
         <Text style={styles.headerText}>betka</Text>
       </View>
@@ -77,23 +79,6 @@ export default function MainBetka() {
         <BoulderCard />
         <BoulderCard />
       </View>
-      {/* <View style={styles.headerBox}>
-        <Text style={styles.headerText}>Latest Bouldersaaa</Text>
-      </View>
-      <View style={styles.latestBoulders}>
-        <Image
-          style={styles.logo}
-          source={require("../assets/img/miniatures/fiolet.png")}
-        />
-        <Image
-          style={styles.logo}
-          source={require("../assets/img/miniatures/fiolet.png")}
-        />
-        <Image
-          style={styles.logo}
-          source={require("../assets/img/miniatures/fiolet.png")}
-        />
-      </View> */}
     </View>
   );
 }
@@ -115,7 +100,7 @@ const styles = StyleSheet.create({
   headerText: {
     // color: "white",
     fontSize: 42,
-    fontFamily: "BarlowCondensed-Regular",
+    // fontFamily: "BarlowCondensed-Regular",
   },
   logo: {
     height: 100,
@@ -135,7 +120,7 @@ const styles = StyleSheet.create({
   },
   recentlyAddText: {
     fontSize: 28,
-    fontFamily: "BarlowCondensed-Regular",
+    // fontFamily: "BarlowCondensed-Regular",
   },
   latestBoulders: {
     backgroundColor: "lightgray",

@@ -28,7 +28,7 @@ export default BoulderCard;
 const styles = StyleSheet.create({
   boulderCard: {
     width: 150,
-    height: 200,
+    height: 250,
     // borderRadius: 15,
     borderWidth: 2,
     backgroundColor: "red",

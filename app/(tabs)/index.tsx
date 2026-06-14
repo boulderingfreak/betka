@@ -11,17 +11,27 @@
 
 //* 13.06 - betka
 //* -dodać font
-
-//TODO:
 //* -label "ostatnio dodane"
 //* -stworzyć komponent "boulderCard" (4)
 //* -naprawić (Tabs) - probuje wstrzymać custom czcionkę najpierw
 //* -https://docs.expo.dev/router/advanced/tabs/ -> tutaj mam odpowiedz na buga, brakuje jednego pliku layout
-// -add example bottom navigation
-// -poprawić logo
-// -poprawić filtry
+//* -add example bottom navigation
 
-import { StyleSheet, View, Image, Text } from "react-native";
+//TODO:
+
+// -logo: fix in GIMP
+
+// -filters:
+// -fix UI
+// -create DropDownMenu DATA js file (Scianka -> all gyms, Sektor -> all sectors of this GYM, Poziom -> all levels of this gym, IMG URI for GymMap2dImage (modal?)
+
+// -convert boulderCardsBox view into scrollview ( https://reactnative.dev/docs/scrollview )
+// ScrollView renders all its react child components at once, but this has a performance downside.
+// This is where FlatList comes into play. FlatList renders items lazily, when they are about to appear, and removes items that scroll way off screen to save memory and processing time.
+// -so convert into FLATLIST instead https://reactnative.dev/docs/flatlist
+// -create data BoulderCard DATA js file (img uri (source), user_avatar img uri, name of boulder, )
+
+import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
 import { theme } from "../../styles/theme";
 import DropdownComponent from "../../components/DropDownMenu";
 import Entypo from "@expo/vector-icons/Entypo";
@@ -30,22 +40,22 @@ import { useFonts } from "expo-font";
 import { useEffect } from "react";
 import BoulderCard from "../../components/BoulderCard";
 
-// SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync();
 
 export default function MainBetka() {
-  // const [loaded, error] = useFonts({
-  //   "BarlowCondensed-Regular": require("../assets/fonts/Barlow/Condensed/BarlowCondensed-Regular.ttf"),
-  // });
+  const [loaded, error] = useFonts({
+    "BarlowCondensed-Regular": require("../../assets/fonts/Barlow/Condensed/BarlowCondensed-Regular.ttf"),
+  });
 
-  // useEffect(() => {
-  //   if (loaded || error) {
-  //     SplashScreen.hideAsync();
-  //   }
-  // }, [loaded, error]);
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
 
-  // if (!loaded && !error) {
-  //   return null;
-  // }
+  if (!loaded && !error) {
+    return null;
+  }
 
   return (
     <View style={styles.background}>
@@ -73,12 +83,12 @@ export default function MainBetka() {
       <View style={styles.recentlyAddBox}>
         <Text style={styles.recentlyAddText}>Ostatnio dodane</Text>
       </View>
-      <View style={styles.boulderCardsBox}>
+      <ScrollView contentContainerStyle={styles.boulderCardsBox}>
         <BoulderCard />
         <BoulderCard />
         <BoulderCard />
         <BoulderCard />
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -93,14 +103,14 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   headerBox: {
-    // backgroundColor: "pink",
+    backgroundColor: "pink",
     flexDirection: "row",
     alignItems: "center",
   },
   headerText: {
     // color: "white",
     fontSize: 42,
-    // fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed-Regular",
   },
   logo: {
     height: 100,
@@ -120,7 +130,7 @@ const styles = StyleSheet.create({
   },
   recentlyAddText: {
     fontSize: 28,
-    // fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed-Regular",
   },
   latestBoulders: {
     backgroundColor: "lightgray",

@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
-
-export default function mainPage() {
+export default function Settings() {
   return (
     <View style={styles.background}>
       <Text style={styles.text}>settings</Text>

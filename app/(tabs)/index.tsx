@@ -16,10 +16,9 @@
 //* -naprawić (Tabs) - probuje wstrzymać custom czcionkę najpierw
 //* -https://docs.expo.dev/router/advanced/tabs/ -> tutaj mam odpowiedz na buga, brakuje jednego pliku layout
 //* -add example bottom navigation
+//* -logo: fix in GIMP
 
 //TODO:
-
-// -logo: fix in GIMP
 
 // -filters:
 // -fix UI
@@ -35,6 +34,7 @@ import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
 import { theme } from "../../styles/theme";
 import DropdownComponent from "../../components/DropDownMenu";
 import Entypo from "@expo/vector-icons/Entypo";
+import Feather from "@expo/vector-icons/Feather";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
@@ -67,17 +67,20 @@ export default function MainBetka() {
         <Text style={styles.headerText}>betka</Text>
       </View>
       <View style={styles.dropDownMenuBox}>
-        <View style={{ width: "32%", height: 10, backgroundColor: "pink" }}>
+        <View style={{ opacity: 1 }}>
           <DropdownComponent iconName={"location-pin"} menuLabel="Ścianka" />
         </View>
-        <View style={{ width: "30%", height: 10 }}>
+
+        <View style={{ opacity: 0.4 }}>
           <DropdownComponent iconName={"map"} menuLabel="Sektor" />
         </View>
-        <View style={{ width: "35%", height: 10 }}>
+
+        <View style={{ opacity: 0.4 }}>
           <DropdownComponent iconName={"bar-graph"} menuLabel="Poziom" />
         </View>
-        <View>
-          <Entypo name="map" size={24} color="black" />
+
+        <View style={{ opacity: 0.4 }}>
+          <Feather name="map" size={40} color="black" />
         </View>
       </View>
       <View style={styles.recentlyAddBox}>
@@ -95,7 +98,7 @@ export default function MainBetka() {
 
 const styles = StyleSheet.create({
   background: {
-    // backgroundColor: theme.colorDarkGray,
+    backgroundColor: "white",
     marginTop: 40,
     marginBottom: 40,
     flex: 1,
@@ -103,41 +106,37 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   headerBox: {
-    backgroundColor: "pink",
+    // backgroundColor: "pink",
     flexDirection: "row",
     alignItems: "center",
+    padding: 12,
   },
   headerText: {
     // color: "white",
     fontSize: 42,
     fontFamily: "BarlowCondensed-Regular",
+    marginBottom: 10,
+    marginLeft: 10,
   },
   logo: {
-    height: 100,
-    width: 100,
+    height: 60,
+    width: 60,
     resizeMode: "stretch",
   },
   dropDownMenuBox: {
-    backgroundColor: "yellow",
+    // backgroundColor: "yellow",
     flexDirection: "row",
-    padding: 10,
-    height: 60,
-    // gap: 6,
-    // height: "10%",
+    // justifyContent: "space-between",
+    padding: 12,
+    gap: 10,
   },
   recentlyAddBox: {
     backgroundColor: "pink",
+    padding: 12,
   },
   recentlyAddText: {
     fontSize: 28,
     fontFamily: "BarlowCondensed-Regular",
-  },
-  latestBoulders: {
-    backgroundColor: "lightgray",
-    // flex: 5,
-    flexDirection: "row",
-    gap: 30,
-    // height: "70%",
   },
   boulderCardsBox: {
     flexDirection: "row",

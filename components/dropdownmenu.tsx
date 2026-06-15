@@ -112,9 +112,10 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     height: 40,
-    width: 80,
-    borderColor: "gray",
-    borderWidth: 0.5,
+    width: 90,
+    // backgroundColor: "pink",
+    borderColor: "black",
+    borderWidth: 2,
     borderRadius: 8,
     paddingHorizontal: 8,
   },

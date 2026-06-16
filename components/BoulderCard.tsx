@@ -6,6 +6,8 @@ import {
   ImageSourcePropType,
   Pressable,
 } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
+import { useLoadFonts } from "../hooks/useLoadFonts";
 
 // type BoulderCardProps = {
 //   imgUrl: ImageSourcePropType;
@@ -15,10 +17,15 @@ import {
 
 // (props: BoulderCardProps)
 
+SplashScreen.preventAutoHideAsync();
+
 const BoulderCard = () => {
+  useLoadFonts();
   return (
     <View style={styles.boulderCard}>
-      {/* <Image style={} source={props.imgUrl} /> */}
+      <Text style={{ fontSize: 34, fontFamily: "BarlowCondensed-Regular" }}>
+        Ścianka
+      </Text>
     </View>
   );
 };

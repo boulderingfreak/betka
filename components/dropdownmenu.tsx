@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, ComponentProps } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import Entypo from "@expo/vector-icons/Entypo";
-import { ComponentProps } from "react";
+import * as SplashScreen from "expo-splash-screen";
+import { useFonts } from "expo-font";
+import { useLoadFonts } from "../hooks/useLoadFonts";
+
+SplashScreen.preventAutoHideAsync();
 
 type DropDownProps = {
   // menuData: object;
   iconName: ComponentProps<typeof Entypo>["name"];
   menuLabel: string;
+  // font: string;
   // dropDownLabel: string;
 };
 
@@ -49,6 +54,7 @@ const obiektoLevels = [
 ];
 
 const DropdownComponent = (props: DropDownProps) => {
+  useLoadFonts();
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
@@ -133,7 +139,8 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 14,
-    fontWeight: "bold",
+    fontFamily: "BarlowCondensed-Regular",
+    // fontWeight: "bold", // NEVER USE THIS AGAIN WITH CUSTOM FONT
   },
   selectedTextStyle: {
     fontSize: 14,

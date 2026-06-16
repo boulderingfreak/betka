@@ -17,15 +17,27 @@ export default function MainBetka() {
       </View>
       <View style={styles.dropDownMenuBox}>
         <View style={{ opacity: 1 }}>
-          <DropdownComponent iconName={"location-pin"} menuLabel="Ścianka" />
+          <DropdownComponent
+            iconName={"location-pin"}
+            menuLabel="Ścianka"
+            marginLeft={8}
+          />
         </View>
 
-        <View style={{ opacity: 0.2 }}>
-          <DropdownComponent iconName={"map"} menuLabel="Sektor" />
+        <View style={{ opacity: 1 }}>
+          <DropdownComponent
+            iconName={"map"}
+            menuLabel="Sektor"
+            marginLeft={16}
+          />
         </View>
 
-        <View style={{ opacity: 0.2 }}>
-          <DropdownComponent iconName={"bar-graph"} menuLabel="Poziom" />
+        <View style={{ opacity: 1 }}>
+          <DropdownComponent
+            iconName={"bar-graph"}
+            menuLabel="Poziom"
+            marginLeft={12}
+          />
         </View>
 
         <View style={{ opacity: 0.2 }}>
@@ -62,8 +74,8 @@ const styles = StyleSheet.create({
   },
   headerText: {
     // color: "white",
-    fontSize: 42,
-    fontFamily: "BarlowCondensed-Regular",
+    fontSize: 38,
+    fontFamily: "BarlowCondensed-Bold",
     marginBottom: 10,
     marginLeft: 10,
   },

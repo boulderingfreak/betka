@@ -23,7 +23,7 @@ const BoulderCard = () => {
   useLoadFonts();
   return (
     <View style={styles.boulderCard}>
-      <Text style={{ fontSize: 34, fontFamily: "BarlowCondensed-Regular" }}>
+      <Text style={{ fontSize: 34, fontFamily: "BarlowCondensed-Light" }}>
         Ścianka
       </Text>
     </View>

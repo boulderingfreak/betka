@@ -5,15 +5,14 @@ import Entypo from "@expo/vector-icons/Entypo";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useLoadFonts } from "../hooks/useLoadFonts";
+import { theme } from "../styles/theme";
 
 SplashScreen.preventAutoHideAsync();
 
 type DropDownProps = {
-  // menuData: object;
   iconName: ComponentProps<typeof Entypo>["name"];
   menuLabel: string;
-  // font: string;
-  // dropDownLabel: string;
+  marginLeft: number;
 };
 
 const data = [
@@ -74,14 +73,19 @@ const DropdownComponent = (props: DropDownProps) => {
       {/* {renderLabel()} */}
       <Dropdown
         style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
-        // placeholderStyle={styles.placeholderStyle}
         placeholderStyle={[
           styles.placeholderStyle,
+          { marginLeft: props.marginLeft },
           isFocus && { color: "blue" },
         ]}
+        //* placeholderStyle={[
+        //*   styles.placeholderStyle,
+        //*   isFocus && { color: "blue" },
+        //* ]}
         selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
+        iconColor="black"
         data={data}
         search
         maxHeight={300}
@@ -119,14 +123,18 @@ const styles = StyleSheet.create({
   dropdown: {
     height: 40,
     width: 90,
-    // backgroundColor: "pink",
+    backgroundColor: "yellow",
     borderColor: "black",
     borderWidth: 2,
     borderRadius: 8,
-    paddingHorizontal: 8,
+    // alignContent: "center",
+    // justifyContent: "center",
+    // padding: 6,
+    // paddingHorizontal: 8,
+    // marginLeft: 3,
   },
   icon: {
-    marginRight: 5,
+    marginRight: 10,
   },
   label: {
     position: "absolute",
@@ -138,16 +146,18 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   placeholderStyle: {
-    fontSize: 14,
-    fontFamily: "BarlowCondensed-Regular",
-    // fontWeight: "bold", // NEVER USE THIS AGAIN WITH CUSTOM FONT
+    fontSize: 20,
+    fontFamily: "BarlowCondensed-SemiBold",
+    marginBottom: 4,
   },
   selectedTextStyle: {
     fontSize: 14,
   },
   iconStyle: {
-    width: 20,
-    height: 20,
+    // marginLeft: 5,
+    // backgroundColor: "pink",
+    width: 22,
+    height: 25,
   },
   inputSearchStyle: {
     height: 40,

@@ -4,16 +4,16 @@
 // ?
 // TODO
 
-// feat:     nowa funkcjonalność
-// fix:      naprawa buga
-// style:    zmiana wyglądu/CSS
-// refactor: reorganizacja kodu bez zmiany działania
-// chore:    konfiguracja, zależności, pliki pomocnicze
-// docs:     dokumentacja
+//?  feat:     nowa funkcjonalność
+//?  fix:      naprawa buga
+//?  style:    zmiana wyglądu/CSS
+//?  refactor: reorganizacja kodu bez zmiany działania
+//?  chore:    konfiguracja, zależności, pliki pomocnicze
+//?  docs:     dokumentacja
 
-// ? git add .
-// ? git commit //-m "chore: add videos folder with example mp4"
-// ? git push
+//?  git add .
+//?  git commit //-m "chore: add videos folder with example mp4"
+//?  git push
 
 //* 13.06 betka
 
@@ -44,13 +44,21 @@
 //? I want to use this as "const value = useSomething()"      -create hook
 //? I want to use this as "<Something />"                     -create component
 
-// TODO:
-//- fix UI to end level //-focused/unfocused
+//TODO - now:
+
+// -fix UI to end level //-focused/unfocused
+// -focused: search label placement
+// -selected Obiekto = custom font + fontWeight
+
+//TODO - all tasks:
+
+//- block unfocused menus
+// -Nothing choosed: Only gyms unlocked.
+// -Obiekto choosed: +Sectors unlocked, +Map unlocked
+// -Obiekto + Sektor choosed: levels unlocked.
 //- create DropDownMenu DATA js file (Scianka //-> all gyms, Sektor //-> all sectors of this GYM, Poziom //-> all levels of this gym, IMG URI for GymMap2dImage (modal?)
 //- convert boulderCardsBox view into scrollview ( https://reactnative.dev/docs/scrollview )
-
 // ? ScrollView renders all its react child components at once, but this has a performance downside.
 // ? This is where FlatList comes into play. FlatList renders items lazily, when they are about to appear, and removes items that scroll way off screen to save memory and processing time.
-
 //- so convert into FLATLIST instead https://reactnative.dev/docs/flatlist
 //- create data BoulderCard DATA js file (img uri (source), user_avatar img uri, name of boulder, )

@@ -2,10 +2,8 @@ import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
 import DropdownComponent from "../../components/DropDownMenu";
 import Feather from "@expo/vector-icons/Feather";
 import BoulderCard from "../../components/BoulderCard";
-import { useLoadFonts } from "../../hooks/useLoadFonts";
 
 export default function MainBetka() {
-  useLoadFonts();
   return (
     <View style={styles.background}>
       <View style={styles.headerBox}>

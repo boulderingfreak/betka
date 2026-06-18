@@ -2,12 +2,6 @@ import React, { useState, useEffect, ComponentProps } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import Entypo from "@expo/vector-icons/Entypo";
-import * as SplashScreen from "expo-splash-screen";
-import { useFonts } from "expo-font";
-import { useLoadFonts } from "../hooks/useLoadFonts";
-import { theme } from "../styles/theme";
-
-SplashScreen.preventAutoHideAsync();
 
 type DropDownProps = {
   iconName: ComponentProps<typeof Entypo>["name"];
@@ -53,7 +47,6 @@ const obiektoLevels = [
 ];
 
 const DropdownComponent = (props: DropDownProps) => {
-  useLoadFonts();
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
@@ -91,7 +84,8 @@ const DropdownComponent = (props: DropDownProps) => {
         maxHeight={300}
         labelField="label"
         valueField="value"
-        placeholder={!isFocus ? props.menuLabel : props.menuLabel}
+        // placeholder={!isFocus ? props.menuLabel : props.menuLabel}
+        placeholder={props.menuLabel}
         searchPlaceholder="Search..."
         value={value}
         onFocus={() => setIsFocus(true)}
@@ -148,7 +142,7 @@ const styles = StyleSheet.create({
   placeholderStyle: {
     fontSize: 20,
     fontFamily: "BarlowCondensed-SemiBold",
-    marginBottom: 4,
+    marginBottom: 3,
   },
   selectedTextStyle: {
     fontSize: 14,

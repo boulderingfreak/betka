@@ -20,7 +20,7 @@ import { useLoadFonts } from "../hooks/useLoadFonts";
 SplashScreen.preventAutoHideAsync();
 
 const BoulderCard = () => {
-  useLoadFonts();
+  // useLoadFonts();
   return (
     <View style={styles.boulderCard}>
       <Text style={{ fontSize: 34, fontFamily: "BarlowCondensed-Light" }}>

@@ -38,7 +38,7 @@ export default function MainBetka() {
           />
         </View>
 
-        <View style={{ opacity: 0.2 }}>
+        <View style={{ opacity: 1 }}>
           <Feather name="map" size={40} color="black" />
         </View>
       </View>

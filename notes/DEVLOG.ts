@@ -16,7 +16,6 @@
 //?  git push
 
 //* 13.06 betka
-
 //*-dodać font
 //*-label "ostatnio dodane"
 //*-stworzyć komponent "boulderCard" (4)
@@ -31,7 +30,6 @@
 //*-google //-> https://javascript.plainenglish.io/add//-custom//-fonts//-in//-expo//-2025//-guide//-3611083cddf1 //-> this
 
 //* 16.06
-
 //*-2025 method dont work for me, trying once again old one https://docs.expo.dev/develop/user//-interface/fonts/
 //*-testing font implement method in smaller component (BoulderCard)
 //*-IT WORKS IN SMALLER component!
@@ -44,21 +42,28 @@
 //? I want to use this as "const value = useSomething()"      -create hook
 //? I want to use this as "<Something />"                     -create component
 
-//TODO - now:
+//* 18.06
+//! useFonts hook method must be inside _layout.tsx
 
-// -fix UI to end level //-focused/unfocused
-// -focused: search label placement
-// -selected Obiekto = custom font + fontWeight
+//* 19.06
+//* -fix UI to end level //-focused/unfocused
+//* -focused: search label placement + translate into "Szukaj"
+//* -selected Obiekto = custom font + fontWeight
 
 //TODO - all tasks:
 
-//- block unfocused menus
-// -Nothing choosed: Only gyms unlocked.
-// -Obiekto choosed: +Sectors unlocked, +Map unlocked
-// -Obiekto + Sektor choosed: levels unlocked.
-//- create DropDownMenu DATA js file (Scianka //-> all gyms, Sektor //-> all sectors of this GYM, Poziom //-> all levels of this gym, IMG URI for GymMap2dImage (modal?)
 //- convert boulderCardsBox view into scrollview ( https://reactnative.dev/docs/scrollview )
 // ? ScrollView renders all its react child components at once, but this has a performance downside.
 // ? This is where FlatList comes into play. FlatList renders items lazily, when they are about to appear, and removes items that scroll way off screen to save memory and processing time.
 //- so convert into FLATLIST instead https://reactnative.dev/docs/flatlist
 //- create data BoulderCard DATA js file (img uri (source), user_avatar img uri, name of boulder, )
+
+//TODO - now:
+
+// -fill correct data in each dropdown
+//- block unfocused menus
+// -Nothing choosed: Only gyms unlocked.
+// -Obiekto choosed: +Sectors unlocked, +Map unlocked
+// -Obiekto + Sektor choosed: levels unlocked.
+
+//- create DropDownMenu DATA js file (Scianka //-> all gyms, Sektor //-> all sectors of this GYM, Poziom //-> all levels of this gym, IMG URI for GymMap2dImage (modal?)

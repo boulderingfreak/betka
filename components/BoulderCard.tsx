@@ -7,7 +7,6 @@ import {
   Pressable,
 } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
-import { useLoadFonts } from "../hooks/useLoadFonts";
 
 // type BoulderCardProps = {
 //   imgUrl: ImageSourcePropType;

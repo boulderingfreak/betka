@@ -50,32 +50,22 @@ const DropdownComponent = (props: DropDownProps) => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
-  // const renderLabel = () => {
-  //   if (value || isFocus) {
-  //     return (
-  //       <Text style={[styles.label, isFocus && { color: "blue" }]}>
-  //         {props.dropDownLabel}
-  //       </Text>
-  //     );
-  //   }
-  //   return null;
-  // };
-
   return (
     <View style={styles.container}>
-      {/* {renderLabel()} */}
       <Dropdown
+        containerStyle={styles.dropDownContainerStyle}
+        itemTextStyle={styles.itemTextStyle}
         style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
         placeholderStyle={[
           styles.placeholderStyle,
           { marginLeft: props.marginLeft },
           isFocus && { color: "blue" },
         ]}
-        //* placeholderStyle={[
-        //*   styles.placeholderStyle,
-        //*   isFocus && { color: "blue" },
-        //* ]}
-        selectedTextStyle={styles.selectedTextStyle}
+        selectedTextStyle={[
+          styles.placeholderStyle,
+          { marginLeft: props.marginLeft },
+          isFocus && { color: "blue" },
+        ]}
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
         iconColor="black"
@@ -86,7 +76,7 @@ const DropdownComponent = (props: DropDownProps) => {
         valueField="value"
         // placeholder={!isFocus ? props.menuLabel : props.menuLabel}
         placeholder={props.menuLabel}
-        searchPlaceholder="Search..."
+        searchPlaceholder="Szukaj..."
         value={value}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
@@ -94,14 +84,6 @@ const DropdownComponent = (props: DropDownProps) => {
           setValue(item.value);
           setIsFocus(false);
         }}
-        // renderLeftIcon={() => (
-        //   <Entypo
-        //     style={styles.icon}
-        //     color={isFocus ? "blue" : "black"}
-        //     name={props.iconName}
-        //     size={20}
-        //   />
-        // )}
       />
     </View>
   );
@@ -114,10 +96,16 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     // padding: 0,
   },
+  dropDownContainerStyle: {
+    borderRadius: 8,
+    // borderWidth: 2,
+    // borderColor: "black",
+  },
+
   dropdown: {
     height: 40,
     width: 90,
-    backgroundColor: "yellow",
+    // backgroundColor: "yellow",
     borderColor: "black",
     borderWidth: 2,
     borderRadius: 8,
@@ -145,7 +133,9 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   selectedTextStyle: {
-    fontSize: 14,
+    fontSize: 20,
+    fontFamily: "BarlowCondensed-SemiBold",
+    marginBottom: 3,
   },
   iconStyle: {
     // marginLeft: 5,
@@ -154,7 +144,13 @@ const styles = StyleSheet.create({
     height: 25,
   },
   inputSearchStyle: {
-    height: 40,
+    height: 50,
     fontSize: 16,
+    fontFamily: "BarlowCondensed-Light",
+    borderRadius: 8,
+  },
+  itemTextStyle: {
+    fontSize: 20,
+    fontFamily: "BarlowCondensed-Regular",
   },
 });

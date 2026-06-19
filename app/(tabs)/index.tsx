@@ -1,9 +1,16 @@
 import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
+import { useState } from "react";
 import DropdownComponent from "../../components/DropDownMenu";
 import Feather from "@expo/vector-icons/Feather";
 import BoulderCard from "../../components/BoulderCard";
+import obiekto from "../../data/obiekto";
+import crux from "../../data/crux";
+import voltWwa from "../../data/voltWwa";
+import gyms from "../../data/gyms";
 
 export default function MainBetka() {
+  const [disableSectors, setDisableSectors] = useState(true);
+  const [disableLevels, setDisableLevels] = useState(true);
   return (
     <View style={styles.background}>
       <View style={styles.headerBox}>
@@ -16,22 +23,28 @@ export default function MainBetka() {
       <View style={styles.dropDownMenuBox}>
         <View style={{ opacity: 1 }}>
           <DropdownComponent
+            disable={false}
+            ownData={gyms}
             iconName={"location-pin"}
             menuLabel="Ścianka"
             marginLeft={8}
           />
         </View>
 
-        <View style={{ opacity: 1 }}>
+        <View style={{ opacity: 0.2 }}>
           <DropdownComponent
+            disable={disableSectors}
+            ownData={gyms}
             iconName={"map"}
             menuLabel="Sektor"
             marginLeft={16}
           />
         </View>
 
-        <View style={{ opacity: 1 }}>
+        <View style={{ opacity: 0.2 }}>
           <DropdownComponent
+            disable={disableLevels}
+            ownData={voltWwa}
             iconName={"bar-graph"}
             menuLabel="Poziom"
             marginLeft={12}

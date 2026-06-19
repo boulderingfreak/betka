@@ -37,9 +37,9 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name="test"
         options={{
-          title: "Settings",
+          title: "test page",
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Feather size={size} name="settings" color={color} />

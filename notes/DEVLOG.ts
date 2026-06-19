@@ -12,7 +12,7 @@
 //?  docs:     dokumentacja
 
 //?  git add .
-//?  git commit //-m "chore: add videos folder with example mp4"
+//?  git commit -m "chore: add videos folder with example mp4"
 //?  git push
 
 //* 13.06 betka
@@ -60,6 +60,12 @@
 
 //TODO - now:
 
+
+// how to monitor SELECTED TEXT state ?
+
+//- block unfocused menus
+
+// -VOLT WWA wrong style after focused
 // -fill correct data in each dropdown
 //- block unfocused menus
 // -Nothing choosed: Only gyms unlocked.

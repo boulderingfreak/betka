@@ -3,56 +3,66 @@ import { StyleSheet, Text, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import Entypo from "@expo/vector-icons/Entypo";
 
+//TODO - now - how to monitor SELECTED TEXT state ?
+// TODO -> sprawdź renderItem lub samo value <---------------------------------------------------------------------------------------
+
+// value to jest klucz
+
+// jesli value == null to ZABLKOWANE MENU
+
+// jesli value == 1 (albo "Obiekto") to odblokowujesz menu 2 i mape 2d
+
+// + tu chyba warto zrobic 3 osobne komponenty bo tak:
+
+// pierwszy komponent: trzyma scianki, kontroluje widoczność mapy i sektorów, dodaje filtr np. "volt"
+// drugi komponent: trzyma sektory, kontroluje widoczność poziomów
+// trzeci komponent: tylko dodaje do przyszlych filtrow poziom np. "3"
+
+
+// how to monitor SELECTED TEXT state ?
+
+// -fill correct data in each dropdown
+
+// each gym has own data file.
+
+//- block unfocused menus
+// -Nothing choosed: Only gyms unlocked.
+// -Obiekto choosed: +Sectors unlocked, +Map unlocked
+// -Obiekto + Sektor choosed: levels unlocked.
+
+//- create DropDownMenu DATA js file (Scianka //-> all gyms, Sektor //-> all sectors of this GYM, Poziom //-> all levels of this gym, IMG URI for GymMap2dImage (modal?)
+
+type GymObject = {
+  label: string;
+  value: string;
+  sectors: string[];
+  levels: string[];
+};
+
 type DropDownProps = {
+  disable: boolean;
   iconName: ComponentProps<typeof Entypo>["name"];
   menuLabel: string;
   marginLeft: number;
+  ownData: any[];
 };
 
-const data = [
-  { label: "Obiekto", value: "1" },
-  { label: "Volt WWA", value: "2" },
-  { label: "Camp4", value: "3" },
-];
-
-const wszystkieBety = [
-  {
-    location: "Obiekto",
-    sector: "Dach",
-    grade: "1",
-    videoUrl: "r2/costam.mp4",
-  },
-  { label: "Volt WWA", value: "2" },
-  { label: "Camp4", value: "3" },
-];
-
-const obiektoSectors = [
-  { label: "Slab", value: "1" },
-  { label: "Dach", value: "2" },
-  { label: "Stary in Wanna", value: "3" },
-  { label: "Keskownia", value: "4" },
-  { label: "Hejterownia", value: "5" },
-];
-
-const obiektoLevels = [
-  { label: "1", value: "1" },
-  { label: "2", value: "2" },
-  { label: "3", value: "3" },
-  { label: "4", value: "4" },
-  { label: "5", value: "5" },
-  { label: "6", value: "6" },
-  { label: "7", value: "7" },
-  { label: "8", value: "8" },
-  { label: "9", value: "9" },
-];
+// const data = [
+//   { label: "Obiekto", value: "1" },
+//   { label: "Volt WWA", value: "2" },
+//   { label: "Camp4", value: "3" },
+// ];
 
 const DropdownComponent = (props: DropDownProps) => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
+  console.log(value);
+
   return (
     <View style={styles.container}>
       <Dropdown
+        disable={props.disable}
         containerStyle={styles.dropDownContainerStyle}
         itemTextStyle={styles.itemTextStyle}
         style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
@@ -69,7 +79,7 @@ const DropdownComponent = (props: DropDownProps) => {
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
         iconColor="black"
-        data={data}
+        data={props.ownData}
         search
         maxHeight={300}
         labelField="label"
@@ -84,6 +94,7 @@ const DropdownComponent = (props: DropDownProps) => {
           setValue(item.value);
           setIsFocus(false);
         }}
+        // renderItem={renderItem}
       />
     </View>
   );

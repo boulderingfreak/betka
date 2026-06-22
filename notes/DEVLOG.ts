@@ -49,6 +49,7 @@
 //* -fix UI to end level //-focused/unfocused
 //* -focused: search label placement + translate into "Szukaj"
 //* -selected Obiekto = custom font + fontWeight
+//*- block unfocused menus
 
 //TODO - all tasks:
 
@@ -58,18 +59,16 @@
 //- so convert into FLATLIST instead https://reactnative.dev/docs/flatlist
 //- create data BoulderCard DATA js file (img uri (source), user_avatar img uri, name of boulder, )
 
-//TODO - now:
-
-
-// how to monitor SELECTED TEXT state ?
-
-//- block unfocused menus
-
 // -VOLT WWA wrong style after focused
-// -fill correct data in each dropdown
-//- block unfocused menus
-// -Nothing choosed: Only gyms unlocked.
-// -Obiekto choosed: +Sectors unlocked, +Map unlocked
-// -Obiekto + Sektor choosed: levels unlocked.
 
-//- create DropDownMenu DATA js file (Scianka //-> all gyms, Sektor //-> all sectors of this GYM, Poziom //-> all levels of this gym, IMG URI for GymMap2dImage (modal?)
+//TODO - now:  -how to monitor SELECTED TEXT state ?
+
+//* -Cold start - nothing choosed: Only gyms unlocked.
+
+// -Gym choosed:
+// 1. Load sectors data by gymId (value) and unlock sectors UI
+// 2. Load map image by gymId (value) and unlock map image UI
+
+// -Sector choosed:
+// 1. Load levels data by sectorId (value) and unlock levels UI
+// 2. Load map image by sectorId (value) and unlock map image UI

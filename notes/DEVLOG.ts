@@ -1,6 +1,10 @@
 //TODO - now:
 
-// 22.06
+// 24.06
+
+// -if -> switch
+// -add clear (sector+level) command after gym select
+
 // -map images with pressable modal
 
 //TODO - all tasks:
@@ -11,6 +15,7 @@
 //- so convert into FLATLIST instead https://reactnative.dev/docs/flatlist
 //- create data BoulderCard DATA js file (img uri (source), user_avatar img uri, name of boulder, )
 // -VOLT WWA wrong style after focused
+// intial state of loadedSectors + loadedLevels
 
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------
 //* 19-22.06

@@ -15,69 +15,52 @@ export default function MainBetka() {
   const [disableSectors, setDisableSectors] = useState(true);
   const [disableLevels, setDisableLevels] = useState(true);
 
-  // const [selectedGyms, setSelectedGym] = useState(gyms); //! tego nie trzeba bo nie wybieram GRUPY gymów
-  const [loadedSectors, setLoadSectors] = useState(gyms); //! TUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
-  const [loadedLevels, setLoadLevels] = useState(gyms); //! test value
+  // const [selectedGyms, setSelectedGym] = useState(gyms);
+  const [loadedSectors, setLoadSectors] = useState(gyms); //! gyms? it works
+  const [loadedLevels, setLoadLevels] = useState(gyms); //!
 
   // na później do filtrów
   const [selectedGymId, setSelectedGymId] = useState("");
   const [selectedSectorId, setSelectedSector] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");
 
-  //* -Cold start - nothing choosed: Only gyms unlocked.
-
-  // -Gym choosed:
-  // 1. Load loadedSectors data by gymId (value) and unlock loadedSectors UI
-  // 2. Load map image by gymId (value) and unlock map image UI
-
-  // -Sector choosed:
-  // 1. Load loadedLevels data by sectorId (value) and unlock loadedLevels UI
-  // 2. Load map image by sectorId (value) and unlock map image UI
-
-  // -Level choosed:
-  // 1. setSelecteLEvel to levelId
-  //! ---------------------------------------------------------------------------------------------
-  // -Gym choosed:
-  // 1. Load loadedSectors data by gymId (value) and unlock loadedSectors UI
-  // 2. Load map image by gymId (value) and unlock map image UI
-
   function handleGymId(gymId: string) {
     console.log(`index.tsx: gymId: ${gymId}`);
 
-    if (gymId === "0") {
-      setSelectedGymId(gymId);
-      console.log(`selected gym = OBIEKTO`); //! to sie nie wykonuje.....................................................................................
+    switch (gymId) {
+      case "0":
+        setSelectedGymId(gymId);
+        console.log(`selected gym = OBIEKTO`);
 
-      setLoadSectors(sectors[0]);
-      console.log("Loading OBIEKTO sectors..."); //? OBIEKTO
+        setLoadSectors(sectors[0]);
+        console.log("Loading OBIEKTO sectors..."); //? OBIEKTO
 
-      setLoadLevels(levels[0]);
-      console.log("Loading OBIEKTO levels...");
+        setLoadLevels(levels[0]);
+        console.log("Loading OBIEKTO levels...");
+        break;
+      case "1":
+        setSelectedGymId(gymId);
+        console.log(`selected gym = CRUX`);
+
+        setLoadSectors(sectors[1]);
+        console.log("Loading CRUX sectors..."); //? CRUX
+
+        setLoadLevels(levels[1]);
+        console.log("Loading CRUX levels...");
+        break;
+      case "2":
+        setSelectedGymId(gymId);
+        console.log(`selected gym = VOLT`);
+
+        setLoadSectors(sectors[2]);
+        console.log("Loading VOLT sectors..."); //? VOLT
+
+        setLoadLevels(levels[2]);
+        console.log("Loading VOLT levels...");
+        break;
     }
 
-    if (gymId === "1") {
-      setSelectedGymId(gymId);
-      console.log(`selected gym = CRUX`);
-
-      setLoadSectors(sectors[1]);
-      console.log("Loading CRUX sectors..."); //? CRUX
-
-      setLoadLevels(levels[1]);
-      console.log("Loading CRUX levels...");
-    }
-
-    if (gymId === "2") {
-      setSelectedGymId(gymId);
-      console.log(`selected gym = VOLT`);
-
-      setLoadSectors(sectors[2]);
-      console.log("Loading VOLT sectors..."); //? VOLT
-
-      setLoadLevels(levels[2]);
-      console.log("Loading VOLT levels...");
-    }
-
-    // After GYM selection unlock sectors and levels UI
+    // After GYM selection unlock sectors UI and levels UI
     setDisableSectors(false);
     console.log("Unlocking sectors UI...");
 
@@ -95,38 +78,38 @@ export default function MainBetka() {
   function handleSectorId(sectorId: string) {
     console.log(`index.tsx: sectorId: ${sectorId}`);
 
-    if (sectorId === "0") {
-      setSelectedSector(sectors[Number(selectedGymId)][0].label);
-      console.log(`id 0 sector choosed`);
-    }
-
-    if (sectorId === "1") {
-      setSelectedSector(sectors[Number(selectedGymId)][1].label);
-      console.log(`id 1 sector choosed`);
-    }
-
-    if (sectorId === "2") {
-      setSelectedSector(sectors[Number(selectedGymId)][2].label);
-      console.log(`id 2 sector choosed`);
+    switch (sectorId) {
+      case "0":
+        setSelectedSector(sectors[Number(selectedGymId)][0].label);
+        console.log(`id 0 sector choosed`);
+        break;
+      case "1":
+        setSelectedSector(sectors[Number(selectedGymId)][1].label);
+        console.log(`id 1 sector choosed`);
+        break;
+      case "2":
+        setSelectedSector(sectors[Number(selectedGymId)][2].label);
+        console.log(`id 2 sector choosed`);
+        break;
     }
   }
 
   function handleLevelId(levelId: string) {
     console.log(`index.tsx: levelId: ${levelId}`);
 
-    if (levelId === "0") {
-      setSelectedLevel(levels[Number(selectedGymId)][0].label);
-      console.log(`id 0 level choosed`);
-    }
-
-    if (levelId === "1") {
-      setSelectedLevel(levels[Number(selectedGymId)][1].label);
-      console.log(`id 1 level choosed`);
-    }
-
-    if (levelId === "2") {
-      setSelectedLevel(levels[Number(selectedGymId)][2].label);
-      console.log(`id 2 level choosed`);
+    switch (levelId) {
+      case "0":
+        setSelectedLevel(levels[Number(selectedGymId)][0].label);
+        console.log(`id 0 level choosed`);
+        break;
+      case "1":
+        setSelectedLevel(levels[Number(selectedGymId)][1].label);
+        console.log(`id 1 level choosed`);
+        break;
+      case "2":
+        setSelectedLevel(levels[Number(selectedGymId)][1].label);
+        console.log(`id 1 level choosed`);
+        break;
     }
   }
 

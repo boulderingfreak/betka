@@ -2,20 +2,24 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 
+//* LevelFilterProps = list of props (key-value pairs) that are passed to component from PARENT?
 type LevelFilterProps = {
-  disable: boolean;
-  menuLabel: string;
-  marginLeft: number;
-  ownData: any[]; //! .
-  handleLevelId: (levelId: string) => void;
+  // selectedGym: string;
+  //* funkcja obsługująca wybrany gym (kliknięcie) -> przekaż tej funkcji key-value pair o kluczu "item" którego value to obiekt JS zawierający dwa key-value
+  handleLevelChange: (item: { label: string; value: string }) => void;
+  disable: boolean; //* key-value - włącznik pressable
+  menuLabel: string; //* key-value - string for placeholder
+  marginLeft: number; //* key-value - adjuster
+  data: any[]; //* key-value - data
 };
 
 const LevelFilter = (props: LevelFilterProps) => {
-  const [value, setValue] = useState(null);
-  const [isFocus, setIsFocus] = useState(false);
+  // const [value, setValue] = useState(null);
+  const [isFocus, setIsFocus] = useState(false); //* gym filter inner state
 
   return (
     <View style={styles.container}>
+      {/* {renderLabel()} */}
       <Dropdown
         disable={props.disable}
         containerStyle={styles.dropDownContainerStyle}
@@ -34,30 +38,24 @@ const LevelFilter = (props: LevelFilterProps) => {
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
         iconColor="black"
-        data={props.ownData}
+        data={props.data}
         search
         maxHeight={300}
         labelField="label"
-        valueField="value" //! value or value?
-        confirmSelectItem
-        onConfirmSelectItem={(item) => {
-          props.handleLevelId(item.value);
-          setIsFocus(false);
-          setValue(item.value);
-        }}
-        placeholder={!isFocus ? props.menuLabel : props.menuLabel}
-        // placeholder={props.menuLabel}
+        valueField="value"
+        placeholder={!isFocus ? props.menuLabel : props.menuLabel} //!!!!!!!!!!!!!!!!!!!!!!
         searchPlaceholder="Szukaj..."
-        value={value}
+        // value={value}
         onFocus={() => {
           setIsFocus(true);
           // console.log("focused");
         }}
         onBlur={() => setIsFocus(false)}
-        onChange={(item) => {
-          setValue(item.value);
-          setIsFocus(false);
-        }}
+        // onChange={(item) => {
+        //   setValue(item.value);
+        //   setIsFocus(false);
+        // }}
+        onChange={props.handleLevelChange}
       />
     </View>
   );
@@ -86,11 +84,12 @@ const styles = StyleSheet.create({
   label: {
     position: "absolute",
     backgroundColor: "white",
-    left: 20,
-    top: 8,
-    zIndex: 999,
-    paddingHorizontal: 0,
-    fontSize: 12,
+    left: 10,
+    top: -10,
+    zIndex: 999, //? https://reactnative.dev/docs/layout-props zIndex
+    paddingHorizontal: 2,
+    fontSize: 16,
+    fontFamily: "BarlowCondensed-Light",
   },
   placeholderStyle: {
     fontSize: 20,

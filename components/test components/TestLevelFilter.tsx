@@ -2,24 +2,24 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 
-//* SectorFilterProps = list of props (key-value pairs) that are passed to component from PARENT?
-type SectorFilterProps = {
-  // selectedGym: string;
-  //* funkcja obsługująca wybrany gym (kliknięcie) -> przekaż tej funkcji key-value pair o kluczu "item" którego value to obiekt JS zawierający dwa key-value
-  handleSectorChange: (item: { label: string; value: string }) => void;
-  disable: boolean; //* key-value - włącznik pressable
-  menuLabel: string; //* key-value - string for placeholder
-  marginLeft: number; //* key-value - adjuster
-  data: any[]; //* key-value - data
+type LevelFilterProps = {
+  selectedLevel: string;
+  disable: boolean;
+  menuLabel: string;
+  marginLeft: number;
+  ownData: any[]; //! .
+  // [groupL: string]: any;
+  handleLevelId: (levelId: string) => void;
 };
 
-const SectorFilter = (props: SectorFilterProps) => {
+// https://react.dev/learn/preserving-and-resetting-state
+
+const LevelFilter = (props: LevelFilterProps) => {
   // const [value, setValue] = useState(null);
-  const [isFocus, setIsFocus] = useState(false); //* gym filter inner state
+  const [isFocus, setIsFocus] = useState(false);
 
   return (
     <View style={styles.container}>
-      {/* {renderLabel()} */}
       <Dropdown
         disable={props.disable}
         containerStyle={styles.dropDownContainerStyle}
@@ -38,30 +38,40 @@ const SectorFilter = (props: SectorFilterProps) => {
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
         iconColor="black"
-        data={props.data}
+        data={props.ownData}
         search
         maxHeight={300}
         labelField="label"
-        valueField="value"
-        placeholder={!isFocus ? props.menuLabel : props.menuLabel} //!!!!!!!!!!!!!!!!!!!!!!
+        valueField="value" //! value or value?
+        confirmSelectItem
+        onConfirmSelectItem={(item) => {
+          props.handleLevelId(item.selectedLevel);
+          setIsFocus(false);
+          // setValue(item.value);
+          console.log(`item.value ${item.value}`);
+          console.log(`item.selectedLevel ${item.selectedLevel}`);
+          // setValue(item.value;
+        }}
+        placeholder={!isFocus ? props.menuLabel : props.menuLabel}
+        // placeholder={props.menuLabel}
         searchPlaceholder="Szukaj..."
-        // value={value}
+        value={props.selectedLevel}
+        // value={props.value}
         onFocus={() => {
           setIsFocus(true);
           // console.log("focused");
         }}
         onBlur={() => setIsFocus(false)}
-        // onChange={(item) => {
-        //   setValue(item.value);
-        //   setIsFocus(false);
-        // }}
-        onChange={props.handleSectorChange}
+        onChange={(item) => {
+          setValue(item.value);
+          setIsFocus(false);
+        }}
       />
     </View>
   );
 };
 
-export default SectorFilter;
+export default LevelFilter;
 
 const styles = StyleSheet.create({
   container: {
@@ -84,12 +94,11 @@ const styles = StyleSheet.create({
   label: {
     position: "absolute",
     backgroundColor: "white",
-    left: 10,
-    top: -10,
-    zIndex: 999, //? https://reactnative.dev/docs/layout-props zIndex
-    paddingHorizontal: 2,
-    fontSize: 16,
-    fontFamily: "BarlowCondensed-Light",
+    left: 20,
+    top: 8,
+    zIndex: 999,
+    paddingHorizontal: 0,
+    fontSize: 12,
   },
   placeholderStyle: {
     fontSize: 20,

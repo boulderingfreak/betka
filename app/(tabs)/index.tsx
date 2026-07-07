@@ -1,116 +1,64 @@
 import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Feather from "@expo/vector-icons/Feather";
 import BoulderCard from "../../components/BoulderCard";
-
-import GymFilter from "../../components/GymFilter";
+import GymsFilter from "../../components/GymFilter";
 import SectorFilter from "../../components/SectorFilter";
 import LevelFilter from "../../components/LevelFilter";
 
 import gyms from "../../data/gyms";
-import sectors from "../../data/sectors";
-import levels from "../../data/levels";
+import sectors from "../../data/test data/sectors";
+import levels from "../../data/test data/levels";
 
 export default function MainBetka() {
   const [disableSectors, setDisableSectors] = useState(true);
   const [disableLevels, setDisableLevels] = useState(true);
 
-  // const [selectedGyms, setSelectedGym] = useState(gyms);
-  const [loadedSectors, setLoadSectors] = useState(gyms); //! gyms? it works
-  const [loadedLevels, setLoadLevels] = useState(gyms); //!
-
-  // na później do filtrów
-  const [selectedGymId, setSelectedGymId] = useState("");
-  const [selectedSectorId, setSelectedSector] = useState("");
+  const [selectedGym, setSelectedGym] = useState("");
+  const [selectedSector, setSelectedSector] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");
 
-  function handleGymId(gymId: string) {
-    console.log(`index.tsx: gymId: ${gymId}`);
+  function handleGymChange(item: { label: string; value: string }) {
+    setSelectedGym(item.value);
+    console.log(`Gym name: ${item.label}`);
+    console.log(`Gym ID: ${item.value}`);
 
-    switch (gymId) {
+    setDisableSectors(false);
+    setDisableLevels(false);
+
+    console.log(`Unlocking sectors and levels...`);
+
+    switch (item.value) {
       case "0":
-        setSelectedGymId(gymId);
         console.log(`selected gym = OBIEKTO`);
-
-        setLoadSectors(sectors[0]);
         console.log("Loading OBIEKTO sectors..."); //? OBIEKTO
-
-        setLoadLevels(levels[0]);
         console.log("Loading OBIEKTO levels...");
         break;
       case "1":
-        setSelectedGymId(gymId);
         console.log(`selected gym = CRUX`);
-
-        setLoadSectors(sectors[1]);
         console.log("Loading CRUX sectors..."); //? CRUX
-
-        setLoadLevels(levels[1]);
         console.log("Loading CRUX levels...");
         break;
       case "2":
-        setSelectedGymId(gymId);
         console.log(`selected gym = VOLT`);
-
-        setLoadSectors(sectors[2]);
         console.log("Loading VOLT sectors..."); //? VOLT
-
-        setLoadLevels(levels[2]);
         console.log("Loading VOLT levels...");
         break;
-    }
-
-    // After GYM selection unlock sectors UI and levels UI
-    setDisableSectors(false);
-    console.log("Unlocking sectors UI...");
-
-    setDisableLevels(false);
-    console.log("Unlocking levels UI...");
-
-    //? and map load + map icon unlock
-  }
-  //! ---------------------------------------------------------------------------------------------
-  // get
-  // -Sector choosed:
-  // 1. Load loadedLevels data by sectorId (value) and unlock loadedLevels UI
-  // 2. Load map image by sectorId (value) and unlock map image UI
-
-  function handleSectorId(sectorId: string) {
-    console.log(`index.tsx: sectorId: ${sectorId}`);
-
-    switch (sectorId) {
-      case "0":
-        setSelectedSector(sectors[Number(selectedGymId)][0].label);
-        console.log(`id 0 sector choosed`);
-        break;
-      case "1":
-        setSelectedSector(sectors[Number(selectedGymId)][1].label);
-        console.log(`id 1 sector choosed`);
-        break;
-      case "2":
-        setSelectedSector(sectors[Number(selectedGymId)][2].label);
-        console.log(`id 2 sector choosed`);
-        break;
+      default:
+        console.log(`this will never happen`);
     }
   }
 
-  function handleLevelId(levelId: string) {
-    console.log(`index.tsx: levelId: ${levelId}`);
+  function handleSectorChange(item: { label: string; value: string }) {
+    setSelectedSector(item.value);
+    console.log(`Sector name: ${item.label}`);
+    console.log(`Sector ID: ${item.value}`);
+  }
 
-    switch (levelId) {
-      case "0":
-        setSelectedLevel(levels[Number(selectedGymId)][0].label);
-        console.log(`id 0 level choosed`);
-        break;
-      case "1":
-        setSelectedLevel(levels[Number(selectedGymId)][1].label);
-        console.log(`id 1 level choosed`);
-        break;
-      case "2":
-        setSelectedLevel(levels[Number(selectedGymId)][1].label);
-        console.log(`id 1 level choosed`);
-        break;
-    }
+  function handleLevelChange(item: { label: string; value: string }) {
+    setSelectedLevel(item.value);
+    console.log(`Level name: ${item.label}`);
+    console.log(`Level ID: ${item.value}`);
   }
 
   return (
@@ -123,32 +71,30 @@ export default function MainBetka() {
         <Text style={styles.headerText}>betka</Text>
       </View>
       <View style={styles.dropDownMenuBox}>
-        <View>
-          <GymFilter
-            disable={false}
-            handleGymId={handleGymId} //!------------------------------------------------------------------
-            menuLabel="Ścianka"
-            ownData={gyms} //!
+        <GymsFilter
+          handleGymChange={handleGymChange}
+          disable={false}
+          data={gyms}
+          menuLabel="Ścianka"
+          marginLeft={8}
+        />
+
+        <View style={[!disableSectors ? { opacity: 1 } : { opacity: 0.2 }]}>
+          <SectorFilter
+            handleSectorChange={handleSectorChange}
+            disable={disableSectors}
+            data={gyms[Number(selectedGym)].sectors}
+            menuLabel="Sektor"
             marginLeft={8}
           />
         </View>
 
         <View style={[!disableSectors ? { opacity: 1 } : { opacity: 0.2 }]}>
-          <SectorFilter
-            disable={disableSectors}
-            handleSectorId={handleSectorId}
-            menuLabel="Sektor"
-            ownData={loadedSectors} //!
-            marginLeft={8}
-          />
-        </View>
-
-        <View style={[!disableLevels ? { opacity: 1 } : { opacity: 0.2 }]}>
           <LevelFilter
+            handleLevelChange={handleLevelChange}
             disable={disableLevels}
-            handleLevelId={handleLevelId}
+            data={gyms[Number(selectedGym)].levels}
             menuLabel="Poziom"
-            ownData={loadedLevels} //!
             marginLeft={8}
           />
         </View>

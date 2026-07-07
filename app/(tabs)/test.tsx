@@ -2,26 +2,43 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import DropdownComponent from "../../components/GymFilter";
 import gyms from "../../data/gyms";
 import { useState } from "react";
-import GymsFilterComponent from "../../components/GymFilter";
+import GymsFilter from "../../components/GymFilter";
+
+//TODO
+//* Zamień funkcje strzałkową na zwykłą
 
 export default function Test() {
-  const [disable, setDisabled] = useState(true);
+  const [selectedGym, setSelectedGym] = useState("");
+
+  // handleGymChange: (item: { label: string; value: string }) => void;
+
+  function handleGymChange(item: { label: string; value: string }) {
+    console.log("Abc");
+    setSelectedGym(item.value);
+    console.log(item.label);
+    console.log(item.value);
+  }
+
   return (
     <View style={styles.background}>
-      <GymsFilterComponent
+      <GymsFilter
+        // handleGymChange={(item) => {
+        //   setSelectedGym(item.value);
+        //   console.log(item.value);
+        // }}
+        handleGymChange={handleGymChange}
         disable={false}
-        ownData={gyms}
-        iconName={"location-pin"}
+        data={gyms}
         menuLabel="Ścianka"
         marginLeft={8}
-        // passValue={handleValue}
       />
       <Pressable
         onPress={() => {
-          setDisabled(false);
+          console.log(selectedGym);
+          console.log(gyms[0].sectors);
         }}
       >
-        <Text style={{ fontSize: 30 }}>click me</Text>
+        <Text style={{ fontSize: 30 }}>show selected gym</Text>
       </Pressable>
     </View>
   );

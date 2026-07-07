@@ -1,29 +1,21 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 
+//* GymFilterProps = list of props (key-value pairs) that are passed to component from PARENT?
 type GymFilterProps = {
-  disable: boolean;
-  menuLabel: string;
-  marginLeft: number;
-  ownData: any[]; //! .
-  handleGymId: (gymId: string) => void;
+  // selectedGym: string;
+  //* funkcja obsługująca wybrany gym (kliknięcie) -> przekaż tej funkcji key-value pair o kluczu "item" którego value to obiekt JS zawierający dwa key-value
+  handleGymChange: (item: { label: string; value: string }) => void;
+  disable: boolean; //* key-value - włącznik pressable
+  menuLabel: string; //* key-value - string for placeholder
+  marginLeft: number; //* key-value - adjuster
+  data: any[]; //* key-value - data
 };
 
 const GymFilter = (props: GymFilterProps) => {
-  const [value, setValue] = useState(null);
-  const [isFocus, setIsFocus] = useState(false);
-
-  // const renderLabel = () => {
-  //   if (value || isFocus) {
-  //     return (
-  //       <Text style={[styles.label, isFocus && { color: "blue" }]}>
-  //         Ścianka
-  //       </Text>
-  //     );
-  //   }
-  //   return null;
-  // };
+  // const [value, setValue] = useState(null);
+  const [isFocus, setIsFocus] = useState(false); //* gym filter inner state
 
   return (
     <View style={styles.container}>
@@ -46,31 +38,24 @@ const GymFilter = (props: GymFilterProps) => {
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
         iconColor="black"
-        data={props.ownData}
+        data={props.data}
         search
         maxHeight={300}
         labelField="label"
         valueField="value"
-        confirmSelectItem
-        onConfirmSelectItem={(item) => {
-          //* most important
-          props.handleGymId(item.value);
-          setIsFocus(false);
-          setValue(item.value);
-        }}
-        placeholder={!isFocus ? props.menuLabel : props.menuLabel}
-        // placeholder={props.menuLabel}
+        placeholder={!isFocus ? props.menuLabel : props.menuLabel} //!!!!!!!!!!!!!!!!!!!!!!
         searchPlaceholder="Szukaj..."
-        value={value}
+        // value={value}
         onFocus={() => {
           setIsFocus(true);
           // console.log("focused");
         }}
         onBlur={() => setIsFocus(false)}
-        onChange={(item) => {
-          setValue(item.value);
-          setIsFocus(false);
-        }}
+        // onChange={(item) => {
+        //   setValue(item.value);
+        //   setIsFocus(false);
+        // }}
+        onChange={props.handleGymChange}
       />
     </View>
   );

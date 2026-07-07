@@ -2,7 +2,8 @@
 
 // 24.06
 
-// -if -> switch
+//* -if -> switch
+
 // -add clear (sector+level) command after gym select
 
 // -map images with pressable modal

@@ -1,8 +1,8 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import DropdownComponent from "../../components/GymFilter";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import DropdownComponent from "../../components/filters/GymFilter";
 import gyms from "../../data/gyms";
 import { useState } from "react";
-import GymsFilter from "../../components/GymFilter";
+import GymsFilter from "../../components/filters/GymFilter";
 
 //TODO
 //* Zamień funkcje strzałkową na zwykłą
@@ -21,7 +21,7 @@ export default function Test() {
 
   return (
     <View style={styles.background}>
-      <GymsFilter
+      {/* <GymsFilter
         // handleGymChange={(item) => {
         //   setSelectedGym(item.value);
         //   console.log(item.value);
@@ -39,7 +39,29 @@ export default function Test() {
         }}
       >
         <Text style={{ fontSize: 30 }}>show selected gym</Text>
-      </Pressable>
+      </Pressable> */}
+
+      <View>
+        <Image
+          style={{ width: 300, height: 300 }}
+          src={
+            "https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/gyms/obiekto/pion/5_czerwona/5_czerwona.png"
+          }
+        />
+
+        <Text
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            fontSize: 30,
+          }}
+        >
+          Some text
+        </Text>
+      </View>
     </View>
   );
 }

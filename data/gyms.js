@@ -2,6 +2,12 @@
 
 //* handleGymChange: (item: { label: string; value: string }) => void;
 
+//TODO:
+//- odpal profileCards w oknie po lewej a po prawej gyms.js
+//- nastepnie pomysl jak ustawić DATA
+//- jak będzie wywoływany dany boulder?
+//-
+
 const gyms = [
   // -------------------------------- Obiekto --------------------------------
   {
@@ -12,6 +18,7 @@ const gyms = [
       {
         label: "Zetka", // sector name
         value: "0", // sector id
+        // boulders: [{ id: 0, miniatureImg: "test", videoUrl: "test" }],
       },
       {
         label: "Dach",

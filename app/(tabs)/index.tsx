@@ -2,13 +2,15 @@ import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
 import { useState, useEffect } from "react";
 import Feather from "@expo/vector-icons/Feather";
 import BoulderCard from "../../components/BoulderCard";
-import GymsFilter from "../../components/GymFilter";
-import SectorFilter from "../../components/SectorFilter";
-import LevelFilter from "../../components/LevelFilter";
+import GymsFilter from "../../components/filters/GymFilter";
+import SectorFilter from "../../components/filters/SectorFilter";
+import LevelFilter from "../../components/filters/LevelFilter";
 
 import gyms from "../../data/gyms";
 import sectors from "../../data/test data/sectors";
 import levels from "../../data/test data/levels";
+
+import boulders from "../../data/boulders";
 
 export default function MainBetka() {
   const [disableSectors, setDisableSectors] = useState(true);
@@ -61,6 +63,25 @@ export default function MainBetka() {
     console.log(`Level ID: ${item.value}`);
   }
 
+  // type BoulderCardProps = {
+  //   id: number;
+  //   imgSrc: string;
+  //   gym: string;
+  //   sector: string;
+  //   level: string;
+  // };
+
+  const boulderCards = boulders.map((boulder) => (
+    <BoulderCard
+      key={boulder.id} //! ????????????????????????????????????????
+      id={boulder.id}
+      imgSrc={boulder.imgSrc}
+      gym={boulder.gym}
+      sector={boulder.sector}
+      level={boulder.level}
+    />
+  ));
+
   return (
     <View style={styles.background}>
       <View style={styles.headerBox}>
@@ -107,10 +128,7 @@ export default function MainBetka() {
         <Text style={styles.recentlyAddText}>Ostatnio dodane</Text>
       </View>
       <ScrollView contentContainerStyle={styles.boulderCardsBox}>
-        <BoulderCard />
-        <BoulderCard />
-        <BoulderCard />
-        <BoulderCard />
+        {boulderCards}
       </ScrollView>
     </View>
   );

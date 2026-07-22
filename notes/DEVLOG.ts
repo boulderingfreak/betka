@@ -1,12 +1,6 @@
 //TODO - now:
 
-// 24.06
-
-//* -if -> switch
-
-// -add clear (sector+level) command after gym select
-
-// -map images with pressable modal
+//-one boulderPreview -> pressable -> link into [id].tsx with BoulderScreen 
 
 //TODO - all tasks:
 
@@ -16,7 +10,15 @@
 //- so convert into FLATLIST instead https://reactnative.dev/docs/flatlist
 //- create data BoulderCard DATA js file (img uri (source), user_avatar img uri, name of boulder, )
 // -VOLT WWA wrong style after focused
-// intial state of loadedSectors + loadedLevels
+
+//* ----------------------------------------------------------------------------------------------------------------------------------------------------------
+//* 22.07
+//* After holiday break I did several changes:
+//* -boulders preview miniatures in figma and boulder videos uploaded on Cloudflare R2 and now its connected with project with 6 example boulders
+//* -each boulder has own unique boulderPage of [id].tsx
+//* -next step is to connect filters with example data
+//* ----------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------
 //* 19-22.06

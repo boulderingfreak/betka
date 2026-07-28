@@ -42,13 +42,15 @@ const BoulderCard = (props: BoulderCardProps) => {
         }
       >
         <Image style={styles.img} src={props.imgSrc} />
-        <Text style={styles.textMiniatureLevel}>{props.level}</Text>
-        <Text style={styles.textMiniatureGym}>{props.gym}</Text>
-        {/* <Text style={styles.textMiniatureSector}>{props.sector}</Text> */}
 
-        {/* <Text style={styles.descriptionLabel}>
-          {props.gym}, {props.sector}, {props.level}
-        </Text> */}
+        <View style={styles.boulderCardLevelBox}>
+          <Text style={styles.boulderCardLevelText}>{props.level}</Text>
+        </View>
+
+        <View style={styles.boulderCardGymSectorBox}>
+          <Text style={styles.boulderCardGymSectorText}>{props.gym}</Text>
+          <Text style={styles.boulderCardGymSectorText}>{props.sector}</Text>
+        </View>
       </Pressable>
     </View>
   );
@@ -60,63 +62,39 @@ const styles = StyleSheet.create({
   boulderCard: {
     width: 150,
     height: 300, //! tutaj sie zastanowić czy uzywamy flex/czy czego
-
-    //!
-    //TODO:
-    
-    // -kiedy uzywamy flexa?
-
-    //-ustawic flexa w calym boulder card
-
-    //
-
-    //-poczytać to https://www.javascripttutorial.net/react-native-tutorial/react-native-position-absolute/
-    //-uzywac absoulte na texcie
-
-    // borderRadius: 15,
-    // borderWidth: 2,
-    // backgroundColor: "red",
   },
   img: {
     width: 150,
     height: 250,
     borderRadius: 20,
   },
-  descriptionLabel: {
-    fontSize: 20,
-    textAlign: "center",
-  },
-  textMiniatureLevel: {
+  boulderCardLevelBox: {
     position: "absolute",
-    padding: 5,
+    paddingTop: 2,
+    paddingLeft: 10,
     left: 0,
     right: 0,
     top: 0,
     bottom: 0,
-    fontSize: 42,
-    // fontFamily: "BarlowCondensed-Regular",
-    color: "white",
   },
-  textMiniatureGym: {
+  boulderCardGymSectorBox: {
     position: "absolute",
-    padding: 5,
-    left: 0,
-    right: 0,
-    top: 200,
-    bottom: 0,
-    fontSize: 20,
-    // fontFamily: "BarlowCondensed-Regular",
-    color: "white",
-  },
-  textMiniatureSector: {
-    position: "absolute",
-    padding: 5,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    paddingBottom: 10,
     left: 0,
     right: 0,
     top: 0,
     bottom: 0,
-    fontSize: 42,
-    // fontFamily: "BarlowCondensed-Regular",
+  },
+  boulderCardLevelText: {
     color: "white",
+    fontSize: 36,
+    fontFamily: "BarlowCondensed-Bold",
+  },
+  boulderCardGymSectorText: {
+    color: "white",
+    fontSize: 18,
+    fontFamily: "BarlowCondensed-Regular",
   },
 });

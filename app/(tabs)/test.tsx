@@ -21,29 +21,9 @@ export default function Test() {
 
   return (
     <View style={styles.background}>
-      {/* <GymsFilter
-        // handleGymChange={(item) => {
-        //   setSelectedGym(item.value);
-        //   console.log(item.value);
-        // }}
-        handleGymChange={handleGymChange}
-        disable={false}
-        data={gyms}
-        menuLabel="Ścianka"
-        marginLeft={8}
-      />
-      <Pressable
-        onPress={() => {
-          console.log(selectedGym);
-          console.log(gyms[0].sectors);
-        }}
-      >
-        <Text style={{ fontSize: 30 }}>show selected gym</Text>
-      </Pressable> */}
-
       <View>
         <Image
-          style={{ width: 300, height: 300 }}
+          style={{ width: 150, height: 150 }}
           src={
             "https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/gyms/obiekto/pion/5_czerwona/5_czerwona.png"
           }
@@ -56,11 +36,24 @@ export default function Test() {
             right: 0,
             top: 0,
             bottom: 0,
-            fontSize: 30,
+            fontSize: 20,
+            color: "white",
           }}
         >
           Some text
         </Text>
+      </View>
+      <View>
+        <Image
+          style={{ width: 150, height: 150 }}
+          src={
+            "https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/gyms/obiekto/pion/5_czerwona/5_czerwona.png"
+          }
+        />
+
+        <View style={styles.textLevelBox}>
+          <Text style={{ color: "white" }}>Some text</Text>
+        </View>
       </View>
     </View>
   );
@@ -75,5 +68,14 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 32,
+  },
+  textLevelBox: {
+    position: "absolute",
+    padding: 5,
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    // backgroundColor: "pink",
   },
 });

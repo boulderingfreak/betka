@@ -202,6 +202,70 @@ const gyms = [
       },
     ],
   },
+  {
+    label: "Volt Łódź",
+    value: "2",
+    sectors: [
+      {
+        label: "Smierc",
+        value: "0",
+      },
+      {
+        label: "Slabom",
+        value: "1",
+      },
+      {
+        label: "Tylko",
+        value: "2",
+      },
+      {
+        label: "Przewieszenia",
+        value: "3",
+      },
+      {
+        label: "Kieszonki",
+        value: "4",
+      },
+    ],
+    levels: [
+      {
+        label: "volt1 test", //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        value: "0",
+      },
+      {
+        label: "volt2 test", //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        value: "1",
+      },
+      {
+        label: "volt3 test",
+        value: "2",
+      },
+      {
+        label: "4",
+        value: "3",
+      },
+      {
+        label: "5",
+        value: "4",
+      },
+      {
+        label: "6",
+        value: "5",
+      },
+      {
+        label: "7",
+        value: "6",
+      },
+      {
+        label: "8",
+        value: "7",
+      },
+      {
+        label: "9",
+        value: "8",
+      },
+    ],
+  },
 ];
 
 export default gyms;

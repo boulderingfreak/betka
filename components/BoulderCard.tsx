@@ -1,20 +1,5 @@
 import { router } from "expo-router";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  ImageSourcePropType,
-  Pressable,
-} from "react-native";
-
-//TODO
-
-//!
-
-//
-
-//!
+import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 
 type BoulderCardProps = {
   id: number;
@@ -26,12 +11,6 @@ type BoulderCardProps = {
 
 const BoulderCard = (props: BoulderCardProps) => {
   return (
-    // <View style={styles.boulderCard}>
-    //   <Link href={`boulderPage/[${Number(id)}].tsx`}>
-    //     <Image style={styles.img} src={props.imgSrc} />
-    //   </Link>
-    // </View>
-
     <View style={styles.boulderCard}>
       <Pressable
         onPress={() =>
@@ -60,8 +39,9 @@ export default BoulderCard;
 
 const styles = StyleSheet.create({
   boulderCard: {
-    width: 150,
-    height: 300, //! tutaj sie zastanowić czy uzywamy flex/czy czego
+    backgroundColor: "pink",
+    flex: 1,
+    padding: 10,
   },
   img: {
     width: 150,

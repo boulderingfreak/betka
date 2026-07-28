@@ -1,23 +1,26 @@
 //TODO - now:
 
-//-one boulderPreview -> pressable -> link into [id].tsx with BoulderScreen 
+// -make FLEX everywhere
+// -connect filters with example data
+// 1. Selected gym Obiekto = only obiekto boulders
+// 2. Selected Sector Zietka = only Obiekto, Zietka boulders
+// 3. Selected Level 3 = only Obiekto, Zietka, 3 boulders
 
 //TODO - all tasks:
 
+// -next step is to connect filters with example data
 //- convert boulderCardsBox view into scrollview ( https://reactnative.dev/docs/scrollview )
 // ? ScrollView renders all its react child components at once, but this has a performance downside.
 // ? This is where FlatList comes into play. FlatList renders items lazily, when they are about to appear, and removes items that scroll way off screen to save memory and processing time.
 //- so convert into FLATLIST instead https://reactnative.dev/docs/flatlist
 //- create data BoulderCard DATA js file (img uri (source), user_avatar img uri, name of boulder, )
 // -VOLT WWA wrong style after focused
+// -MAP ICON make it pressable -> show modal image of map
 
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------
 //* 29.07
 //* -added dynamic labels on each boulderCard
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------
 //* 22.07
@@ -26,7 +29,6 @@
 //* -each boulder has own unique boulderPage of [id].tsx
 //* -next step is to connect filters with example data
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------
 //* 19-22.06

@@ -1,4 +1,11 @@
-import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  ScrollView,
+  FlatList,
+} from "react-native";
 import { useState, useEffect } from "react";
 import Feather from "@expo/vector-icons/Feather";
 import BoulderCard from "../../components/BoulderCard";
@@ -63,14 +70,6 @@ export default function MainBetka() {
     console.log(`Level ID: ${item.value}`);
   }
 
-  // type BoulderCardProps = {
-  //   id: number;
-  //   imgSrc: string;
-  //   gym: string;
-  //   sector: string;
-  //   level: string;
-  // };
-
   const boulderCards = boulders.map((boulder) => (
     <BoulderCard
       key={boulder.id} //! ????????????????????????????????????????
@@ -87,7 +86,9 @@ export default function MainBetka() {
       <View style={styles.headerBox}>
         <Image
           style={styles.logo}
-          source={require("../../assets/img/betka_logo_dark.png")}
+          src={
+            "https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/imgs/betka_logo_dark.png"
+          }
         />
         <Text style={styles.headerText}>betka</Text>
       </View>
@@ -119,38 +120,55 @@ export default function MainBetka() {
             marginLeft={8}
           />
         </View>
-
-        <View style={[!disableSectors ? { opacity: 1 } : { opacity: 0.2 }]}>
-          <Feather name="map" size={40} color="black" />
+        <View style={styles.mapBox}>
+          <View style={[!disableSectors ? { opacity: 1 } : { opacity: 0.2 }]}>
+            <Feather name="map" size={40} color="black" />
+          </View>
         </View>
       </View>
       <View style={styles.recentlyAddBox}>
         <Text style={styles.recentlyAddText}>Ostatnio dodane</Text>
       </View>
+
+      <View style={styles.flatListBox}>
+        <FlatList
+          data={boulders} //! <------- state after selection
+          contentContainerStyle={styles.boulderCardsBox}
+          renderItem={({ item }) => (
+            <BoulderCard
+              id={item.id}
+              imgSrc={item.imgSrc}
+              gym={item.gym}
+              sector={item.sector}
+              level={item.level}
+            />
+          )}
+          keyExtractor={(item) => String(item.id)}
+        />
+      </View>
+
+      {/* <Text>OLD SCROLLVIEW:</Text>
       <ScrollView contentContainerStyle={styles.boulderCardsBox}>
         {boulderCards}
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: "white",
-    marginTop: 40,
-    marginBottom: 40,
+    backgroundColor: "red",
     flex: 1,
-    // alignItems: "stretch",
-    // justifyContent: "center",
+    marginTop: 40,
   },
   headerBox: {
-    // backgroundColor: "pink",
+    backgroundColor: "lightgreen",
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     padding: 12,
   },
   headerText: {
-    // color: "white",
     fontSize: 38,
     fontFamily: "BarlowCondensed-Bold",
     marginBottom: 10,
@@ -162,9 +180,9 @@ const styles = StyleSheet.create({
     resizeMode: "stretch",
   },
   dropDownMenuBox: {
-    // backgroundColor: "yellow",
+    backgroundColor: "orange",
+    flex: 1,
     flexDirection: "row",
-    // justifyContent: "space-between",
     padding: 12,
     gap: 10,
   },
@@ -175,12 +193,22 @@ const styles = StyleSheet.create({
     opacity: 1,
   },
   recentlyAddBox: {
-    // backgroundColor: "pink",
-    padding: 12,
+    backgroundColor: "yellow",
+    flex: 0,
+    padding: 4,
   },
   recentlyAddText: {
     fontSize: 28,
     fontFamily: "BarlowCondensed-Regular",
+  },
+  flatListBox: {
+    flex: 8,
+    backgroundColor: "blue",
+    // marginBottom: 10,
+  },
+  mapBox: {
+    backgroundColor: "red",
+    justifyContent: "center",
   },
   boulderCardsBox: {
     flexDirection: "row",

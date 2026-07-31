@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
   boulderCard: {
     backgroundColor: "pink",
     flex: 1,
-    padding: 10,
+    // padding: 8,
+    // marginBottom: 20,
   },
   img: {
     width: 150,

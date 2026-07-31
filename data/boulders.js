@@ -1,6 +1,34 @@
 const boulders = [
   {
     id: 0,
+    gym: "Crux",
+    sector: "Test",
+    level: "1",
+    color: "Testowy",
+
+    imgSrc:
+      "https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/test/crux_test.png",
+    //
+    videoSource:
+      "https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/gyms/obiekto/pion/5/czerwona/obiekto_pion_5_czerwona.mp4",
+    likes: 555,
+  },
+  {
+    id: 1,
+    gym: "Volt",
+    sector: "Test",
+    level: "1",
+    color: "Testowy",
+
+    imgSrc:
+      "https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/test/volt_test.png",
+    //
+    videoSource:
+      "https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/gyms/obiekto/pion/5/czerwona/obiekto_pion_5_czerwona.mp4",
+    likes: 555,
+  },
+  {
+    id: 2,
     gym: "Obiekto",
     sector: "Pion",
     level: "5",
@@ -14,7 +42,7 @@ const boulders = [
     likes: 555,
   },
   {
-    id: 1,
+    id: 3,
     gym: "Obiekto",
     sector: "Zietka",
     level: "5",
@@ -26,7 +54,7 @@ const boulders = [
     likes: 555,
   },
   {
-    id: 2,
+    id: 4,
     gym: "Obiekto",
     sector: "45",
     level: "5",
@@ -38,7 +66,7 @@ const boulders = [
     likes: 555,
   },
   {
-    id: 3,
+    id: 5,
     gym: "Obiekto",
     sector: "45",
     level: "5",
@@ -50,7 +78,7 @@ const boulders = [
     likes: 555,
   },
   {
-    id: 4,
+    id: 6,
     gym: "Obiekto",
     sector: "Zetka",
     level: "5",
@@ -62,7 +90,7 @@ const boulders = [
     likes: 555,
   },
   {
-    id: 5,
+    id: 7,
     gym: "Obiekto",
     sector: "45",
     level: "6",

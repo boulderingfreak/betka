@@ -1,12 +1,13 @@
 //TODO - now:
 
-// -make FLEX everywhere
 // -connect filters with example data
 // 1. Selected gym Obiekto = only obiekto boulders
 // 2. Selected Sector Zietka = only Obiekto, Zietka boulders
 // 3. Selected Level 3 = only Obiekto, Zietka, 3 boulders
 
 //TODO - all tasks:
+
+// WARN  `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.Consider using `numColumns` with `FlatList` instead.
 
 // -next step is to connect filters with example data
 //- convert boulderCardsBox view into scrollview ( https://reactnative.dev/docs/scrollview )
@@ -20,6 +21,7 @@
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------
 //* 29.07
 //* -added dynamic labels on each boulderCard
+//* -make FLEX everywhere
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -23,16 +23,12 @@ import boulders from "../../data/boulders";
 export default function MainBetka() {
   const [disableSectors, setDisableSectors] = useState(true);
   const [disableLevels, setDisableLevels] = useState(true);
-  const [selectedGym, setSelectedGym] = useState("");
-  const [actualBoulders, setFiltredBoulders] = useState(boulders);
 
-  // const [selectedSector, setSelectedSector] = useState("");
-  // const [selectedLevel, setSelectedLevel] = useState("");
-  // const [gymFilter, setGymFilter] = useState("");
-  //! ----------------------------------------------------------------------
-  // const actualFilters = [selectedGym, selectedSector, selectedLevel];
-  // aktualny stan boulderów dla flatlista
-  //! tu mozna by bylo sie zastanowić nad innymi useState
+  const [selectedGym, setSelectedGym] = useState("");
+  const [selectedSector, setSelectedSector] = useState("");
+  const [selectedLevel, setSelectedLevel] = useState("");
+
+  const [actualBoulders, setFiltredBoulders] = useState(boulders);
 
   function handleGymChange(item: { label: string; value: string }) {
     setSelectedGym(item.value);
@@ -50,8 +46,6 @@ export default function MainBetka() {
 
     switch (item.value) {
       case "0":
-        //! Tutaj?
-        // filterByGym(item.label);
         console.log(`selected gym = OBIEKTO`);
         console.log("Loading OBIEKTO sectors..."); //? OBIEKTO
         console.log("Loading OBIEKTO levels...");
@@ -72,7 +66,7 @@ export default function MainBetka() {
   }
 
   function handleSectorChange(item: { label: string; value: string }) {
-    // setSelectedSector(item.value);
+    setSelectedSector(item.value);
     console.log(`Sector name: ${item.label}`);
     console.log(`Sector ID: ${item.value}`);
 
@@ -81,26 +75,13 @@ export default function MainBetka() {
   }
 
   function handleLevelChange(item: { label: string; value: string }) {
-    // setSelectedLevel(item.value);
+    setSelectedLevel(item.value);
     console.log(`Level name: ${item.label}`);
     console.log(`Level ID: ${item.value}`);
 
     // filter by level
     filterByLevel(item.label);
   }
-
-  // Potrzebuje zrobic cos takiego - mieć CONDITION jako zmienna/state do którego mogę dodawać/odejmować:
-  //
-  // actualFilters, setFilters(+= ?)
-  //
-  // item.gym === "Obiekto"  to jako zmienna
-  // item.gym === "Obiekto" + item.sector === "Zietka" + item.level = "3"
-
-  // const filtredBoulders = boulders.filter((item) => I_TUTAJ_JAKIS_STATE?);
-
-  // yNamectualFilters = [selectedGym, selectedSector, selectedLevel];
-
-  //! && item.sector === selectedSector && item.level === selectedLevel
 
   function filterByGym(gym: string) {
     const filtredByGym = boulders.filter((item) => item.gym === gym); //* ---------------------- pamietaj tu jest boulders.filter
@@ -132,28 +113,10 @@ export default function MainBetka() {
     setDisableSectors(true);
     setDisableLevels(true);
     setSelectedGym("");
+    setSelectedSector("");
+    setSelectedLevel("");
     setFiltredBoulders(boulders);
-    //     const [disableSectors, setDisableSectors] = useState(true);
-    // const [disableLevels, setDisableLevels] = useState(true);
-    // const [selectedGym, setSelectedGym] = useState("");
-    // const [actualBoulders, setFiltredBoulders] = useState(boulders);
   }
-
-  // function filterByGym() {
-  //   const filtredByGym = boulders.filter((item) => item.gym === "Obiekto"); // pierwszy pomysł: wyrenderuj po filtrze: TYLKO INCOMPLETE TASKI ZOSTAJĄ
-  //   setFiltredBoulders(filtredByGym);
-  // }
-
-  const boulderCards = boulders.map((boulder) => (
-    <BoulderCard
-      key={boulder.id} //! ????????????????????????????????????????
-      id={boulder.id}
-      imgSrc={boulder.imgSrc}
-      gym={boulder.gym}
-      sector={boulder.sector}
-      level={boulder.level}
-    />
-  ));
 
   return (
     <View style={styles.background}>
@@ -173,6 +136,7 @@ export default function MainBetka() {
           data={gyms}
           menuLabel="Ścianka"
           marginLeft={8}
+          selectedGym={selectedGym}
         />
 
         <View style={[!disableSectors ? { opacity: 1 } : { opacity: 0.2 }]}>
@@ -182,6 +146,7 @@ export default function MainBetka() {
             data={gyms[Number(selectedGym)].sectors}
             menuLabel="Sektor"
             marginLeft={8}
+            selectedSector={selectedSector}
           />
         </View>
 
@@ -192,6 +157,7 @@ export default function MainBetka() {
             data={gyms[Number(selectedGym)].levels}
             menuLabel="Poziom"
             marginLeft={8}
+            selectedLevel={selectedLevel}
           />
         </View>
         <View style={styles.filterIconBox}>

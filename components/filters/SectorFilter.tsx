@@ -11,6 +11,7 @@ type SectorFilterProps = {
   menuLabel: string; //* key-value - string for placeholder
   marginLeft: number; //* key-value - adjuster
   data: any[]; //* key-value - data
+  selectedSector: string;
 };
 
 const SectorFilter = (props: SectorFilterProps) => {
@@ -43,7 +44,7 @@ const SectorFilter = (props: SectorFilterProps) => {
         maxHeight={300}
         labelField="label"
         valueField="value"
-        placeholder={!isFocus ? props.menuLabel : props.menuLabel} //!!!!!!!!!!!!!!!!!!!!!!
+        placeholder={props.menuLabel} //!!!!!!!!!!!!!!!!!!!!!!
         searchPlaceholder="Szukaj..."
         // value={value}
         onFocus={() => {
@@ -56,6 +57,7 @@ const SectorFilter = (props: SectorFilterProps) => {
         //   setIsFocus(false);
         // }}
         onChange={props.handleSectorChange}
+        value={props.selectedSector}
       />
     </View>
   );

@@ -11,6 +11,7 @@ type LevelFilterProps = {
   menuLabel: string; //* key-value - string for placeholder
   marginLeft: number; //* key-value - adjuster
   data: any[]; //* key-value - data
+  selectedLevel: string;
 };
 
 const LevelFilter = (props: LevelFilterProps) => {
@@ -43,19 +44,15 @@ const LevelFilter = (props: LevelFilterProps) => {
         maxHeight={300}
         labelField="label"
         valueField="value"
-        placeholder={!isFocus ? props.menuLabel : props.menuLabel} //!!!!!!!!!!!!!!!!!!!!!!
+        placeholder={props.menuLabel} //!!!!!!!!!!!!!!!!!!!!!!
         searchPlaceholder="Szukaj..."
-        // value={value}
         onFocus={() => {
           setIsFocus(true);
           // console.log("focused");
         }}
         onBlur={() => setIsFocus(false)}
-        // onChange={(item) => {
-        //   setValue(item.value);
-        //   setIsFocus(false);
-        // }}
         onChange={props.handleLevelChange}
+        value={props.selectedLevel}
       />
     </View>
   );

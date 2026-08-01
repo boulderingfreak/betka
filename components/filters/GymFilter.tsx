@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 
 //* GymFilterProps = list of props (key-value pairs) that are passed to component from PARENT?
@@ -11,6 +11,7 @@ type GymFilterProps = {
   menuLabel: string; //* key-value - string for placeholder
   marginLeft: number; //* key-value - adjuster
   data: any[]; //* key-value - data
+  selectedGym: string;
 };
 
 const GymFilter = (props: GymFilterProps) => {
@@ -19,7 +20,6 @@ const GymFilter = (props: GymFilterProps) => {
 
   return (
     <View style={styles.container}>
-      {/* {renderLabel()} */}
       <Dropdown
         disable={props.disable}
         containerStyle={styles.dropDownContainerStyle}
@@ -43,12 +43,12 @@ const GymFilter = (props: GymFilterProps) => {
         maxHeight={300}
         labelField="label"
         valueField="value"
-        placeholder={!isFocus ? props.menuLabel : props.menuLabel} //!!!!!!!!!!!!!!!!!!!!!!
+        placeholder={props.menuLabel}
         searchPlaceholder="Szukaj..."
         // value={value}
         onFocus={() => {
           setIsFocus(true);
-          // console.log("focused");
+          console.log("GYM FILTER FOCUSED");
         }}
         onBlur={() => setIsFocus(false)}
         // onChange={(item) => {
@@ -56,6 +56,7 @@ const GymFilter = (props: GymFilterProps) => {
         //   setIsFocus(false);
         // }}
         onChange={props.handleGymChange}
+        value={props.selectedGym}
       />
     </View>
   );

@@ -1,20 +1,14 @@
-//TODO - now:
+//! TODO - now:
 
-//* -Zietka not in sectors
+//* 1. After gym selection, reset Sector Focus and Level Focus
 
 //TODO - all tasks:
 
-// WARN  `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.Consider using `numColumns` with `FlatList` instead.
-
+// - map icon page
+// - boulder page
+// - login page
 // - https://docs.expo.dev/develop/user-interface/splash-screen-and-app-icon/#splash-screen
-// -next step is to connect filters with example data
-//- convert boulderCardsBox view into scrollview ( https://reactnative.dev/docs/scrollview )
-// ? ScrollView renders all its react child components at once, but this has a performance downside.
-// ? This is where FlatList comes into play. FlatList renders items lazily, when they are about to appear, and removes items that scroll way off screen to save memory and processing time.
-//- so convert into FLATLIST instead https://reactnative.dev/docs/flatlist
-//- create data BoulderCard DATA js file (img uri (source), user_avatar img uri, name of boulder, )
-// -VOLT WWA wrong style after focused
-// -MAP ICON make it pressable -> show modal image of map
+// - WARN  `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.Consider using `numColumns` with `FlatList` instead.
 
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------
 //* 05.08

@@ -34,6 +34,8 @@ export default function MainBetka() {
 
   function handleGymChange(item: { label: string; value: string }) {
     setSelectedGym(item.value);
+    setSelectedSector("");
+    setSelectedLevel("");
     console.log(`Gym name:  ${item.label} (item.label)`);
     console.log(`Gym ID: ${item.value} (item.value)`);
 

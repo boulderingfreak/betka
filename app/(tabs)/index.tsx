@@ -3,24 +3,26 @@ import {
   View,
   Image,
   Text,
-  ScrollView,
   FlatList,
   Pressable,
 } from "react-native";
-import { useState, useEffect } from "react";
-import Feather from "@expo/vector-icons/Feather";
+
+import { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import BoulderCard from "../../components/BoulderCard";
 import GymsFilter from "../../components/filters/GymFilter";
 import SectorFilter from "../../components/filters/SectorFilter";
 import LevelFilter from "../../components/filters/LevelFilter";
+import lightMode from "../../styles/theme";
 
 import gyms from "../../data/gyms";
-import sectors from "../../data/test data/sectors";
-import levels from "../../data/test data/levels";
 
 import boulders from "../../data/boulders";
 
 export default function MainBetka() {
+  // const [lightMode, setlightMode] = useState(true);
+
   const [disableSectors, setDisableSectors] = useState(true);
   const [disableLevels, setDisableLevels] = useState(true);
 
@@ -32,7 +34,6 @@ export default function MainBetka() {
 
   function handleGymChange(item: { label: string; value: string }) {
     setSelectedGym(item.value);
-    // setGymFilter(item.label);
     console.log(`Gym name:  ${item.label} (item.label)`);
     console.log(`Gym ID: ${item.value} (item.value)`);
 
@@ -119,15 +120,10 @@ export default function MainBetka() {
   }
 
   return (
-    <View style={styles.background}>
-      <View style={styles.headerBox}>
-        <Image
-          style={styles.logo}
-          src={
-            "https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/imgs/betka_logo_dark.png"
-          }
-        />
-        <Text style={styles.headerText}>betka</Text>
+    <SafeAreaView style={styles.background} edges={["top", "left", "right"]}>
+      <View style={styles.header}>
+        <Ionicons name="person-circle" size={44} color="black" />
+        <Text style={styles.headerText}>Cześć, 0123456789123456!</Text>
       </View>
       <View style={styles.dropDownMenuBox}>
         <GymsFilter
@@ -160,27 +156,20 @@ export default function MainBetka() {
             selectedLevel={selectedLevel}
           />
         </View>
-        <View style={styles.filterIconBox}>
-          <View style={[!disableSectors ? { opacity: 1 } : { opacity: 0.2 }]}>
-            <Pressable onPress={resetFilters}>
-              <Image
-                style={styles.imgIcon}
-                src="https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/imgs/filter-reset-svgrepo-com.png"
-              />
-            </Pressable>
-          </View>
-        </View>
-      </View>
-      <View style={styles.recentlyAddBox}>
-        <Text style={styles.recentlyAddText}>Ostatnio dodane</Text>
-        <View style={{}}>
-          <Feather name="map" size={38} color="black" />
+
+        <View style={[!disableSectors ? { opacity: 1 } : { opacity: 0.2 }]}>
+          <Pressable onPress={resetFilters}>
+            <Image
+              style={styles.imgIcon}
+              src="https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/imgs/filter-reset-svgrepo-com.png"
+            />
+          </Pressable>
         </View>
       </View>
 
       <View style={styles.flatListBox}>
         <FlatList
-          data={actualBoulders} //! <------- state after selection
+          data={actualBoulders}
           contentContainerStyle={styles.contentContainerStyle}
           renderItem={({ item }) => (
             <BoulderCard
@@ -194,45 +183,35 @@ export default function MainBetka() {
           keyExtractor={(item) => String(item.id)}
         />
       </View>
-
-      {/* <Text>OLD SCROLLVIEW:</Text>
-      <ScrollView contentContainerStyle={styles.contentContainerStyle}>
-        {boulderCards}
-      </ScrollView> */}
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: "red",
+    backgroundColor: lightMode.bgDark,
     flex: 1,
-    marginTop: 40,
   },
-  headerBox: {
-    backgroundColor: "lightgreen",
-    flex: 1,
+  header: {
+    // backgroundColor: "yellow",
+    flex: 0,
     flexDirection: "row",
+    // justifyContent: "center",
     alignItems: "center",
-    padding: 12,
-    justifyContent: "center",
+    gap: 6,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   headerText: {
-    fontSize: 38,
-    fontFamily: "BarlowCondensed-Bold",
-    marginBottom: 10,
-    marginLeft: 10,
-  },
-  logo: {
-    height: 60,
-    width: 60,
-    resizeMode: "stretch",
+    fontSize: 30,
+    fontFamily: "BarlowCondensed-Regular",
   },
   dropDownMenuBox: {
-    backgroundColor: "orange",
+    // backgroundColor: "green",
+    justifyContent: "center",
+    alignItems: "center",
     flex: 1,
     flexDirection: "row",
-    padding: 12,
     gap: 10,
   },
   sectorsOpacityActive: {
@@ -241,35 +220,18 @@ const styles = StyleSheet.create({
   sectorsOpacityUnactive: {
     opacity: 1,
   },
-  filterIconBox: {
-    // backgroundColor: "red",
-    justifyContent: "center",
-    marginRight: 0,
-  },
   imgIcon: {
     height: 40,
     width: 40,
   },
-  recentlyAddBox: {
-    backgroundColor: "yellow",
-    flex: 0,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-  recentlyAddText: {
-    fontSize: 28,
-    fontFamily: "BarlowCondensed-Regular",
-  },
 
   flatListBox: {
-    flex: 8,
-    backgroundColor: "blue",
+    flex: 7,
+    // backgroundColor: "blue",
   },
 
   contentContainerStyle: {
-    backgroundColor: "cyan",
+    // backgroundColor: "cyan",
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 12,

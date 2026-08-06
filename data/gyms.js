@@ -16,17 +16,20 @@ const gyms = [
     //* Array of sectors
     sectors: [
       {
-        label: "Zetka", // sector name
+        label: "Zietka", // sector name
         value: "0", // sector id
-        // boulders: [{ id: 0, miniatureImg: "test", videoUrl: "test" }],
+      },
+      {
+        label: "Zetka", // sector name
+        value: "1", // sector id
       },
       {
         label: "Dach",
-        value: "1",
+        value: "2",
       },
       {
         label: "45",
-        value: "2",
+        value: "3",
       },
     ],
     //* Array of levels

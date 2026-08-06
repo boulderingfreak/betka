@@ -24,6 +24,7 @@ export default function Layout() {
   if (!loaded && !error) {
     return null;
   }
+
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: "blue" }}>
       <Tabs.Screen
@@ -43,6 +44,16 @@ export default function Layout() {
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Feather size={size} name="settings" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="map"
+        options={{
+          title: "map",
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <Feather size={size} name="map" color={color} />
           ),
         }}
       />

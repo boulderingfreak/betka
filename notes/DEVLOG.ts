@@ -1,14 +1,12 @@
 //TODO - now:
 
-// -connect filters with example data
-// 1. Selected gym Obiekto = only obiekto boulders
-// 2. Selected Sector Zietka = only Obiekto, Zietka boulders
-// 3. Selected Level 3 = only Obiekto, Zietka, 3 boulders
+//* -Zietka not in sectors
 
 //TODO - all tasks:
 
 // WARN  `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.Consider using `numColumns` with `FlatList` instead.
 
+// - https://docs.expo.dev/develop/user-interface/splash-screen-and-app-icon/#splash-screen
 // -next step is to connect filters with example data
 //- convert boulderCardsBox view into scrollview ( https://reactnative.dev/docs/scrollview )
 // ? ScrollView renders all its react child components at once, but this has a performance downside.
@@ -17,6 +15,18 @@
 //- create data BoulderCard DATA js file (img uri (source), user_avatar img uri, name of boulder, )
 // -VOLT WWA wrong style after focused
 // -MAP ICON make it pressable -> show modal image of map
+
+//* ----------------------------------------------------------------------------------------------------------------------------------------------------------
+//* 05.08
+//* -changed layout a bit, deleted logo and label, trying new header with example profile logo and welcome message
+//* -fixed safeareaview bug with https://github.com/react-navigation/react-navigation/issues/8694 - just added prop "edges"
+//* -reduced amount of useless styles and views
+//* ----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//* ----------------------------------------------------------------------------------------------------------------------------------------------------------
+//* 04.08
+//* -expo go has limitations for tabs navigation in darkmode
+//* ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //* ----------------------------------------------------------------------------------------------------------------------------------------------------------
 //* 29.07

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "main_code",
+    "name": "betka",
     "slug": "main_codey",
     "scheme": "main_code",
     "version": "1.0.0",
@@ -8,9 +8,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "https://pub-672397cd77d34b5b9220ad364a4bdd6a.r2.dev/imgs/betka_logo_dark.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "black"
     },
     "ios": {
       "supportsTablet": true
@@ -22,7 +22,8 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -39,10 +39,7 @@ export default BoulderCard;
 
 const styles = StyleSheet.create({
   boulderCard: {
-    backgroundColor: "pink",
-    flex: 1,
-    // padding: 8,
-    // marginBottom: 20,
+    // backgroundColor: "pink",
   },
   img: {
     width: 150,

@@ -1,38 +1,44 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
-// import TestComponent from "../../components/TestBoxOne";
-import { useState } from "react";
+import { Text, StyleSheet, View, useColorScheme } from "react-native";
 
-//TODO
+import { StatusBar } from "expo-status-bar";
 
-//* -
+export default function App() {
+  const colorScheme = useColorScheme();
 
-export default function Test() {
-  const [actualState, setActualState] = useState("Initial State");
+  const themeTextStyle =
+    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+  const themeContainerStyle =
+    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
   return (
-    <View style={styles.background}>
-      {/* <TestComponent text={actualState} /> */}
+    <View style={[styles.container, themeContainerStyle]}>
+      <Text style={[styles.text, themeTextStyle]}>
+        Color scheme: {colorScheme}
+      </Text>
+      <StatusBar />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  background: {
+  container: {
     flex: 1,
-    backgroundColor: "white",
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
   },
   text: {
-    fontSize: 32,
+    fontSize: 20,
   },
-  textLevelBox: {
-    position: "absolute",
-    padding: 5,
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    // backgroundColor: "pink",
+  lightContainer: {
+    backgroundColor: "#d0d0c0",
+  },
+  darkContainer: {
+    backgroundColor: "#242c40",
+  },
+  lightThemeText: {
+    color: "#242c40",
+  },
+  darkThemeText: {
+    color: "#d0d0c0",
   },
 });

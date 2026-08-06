@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
+import lightMode from "../../styles/theme";
 
 //* GymFilterProps = list of props (key-value pairs) that are passed to component from PARENT?
 type GymFilterProps = {
@@ -18,66 +19,58 @@ const GymFilter = (props: GymFilterProps) => {
   // const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false); //* gym filter inner state
 
+  // styles.container
   return (
-    <View style={styles.container}>
-      <Dropdown
-        disable={props.disable}
-        containerStyle={styles.dropDownContainerStyle}
-        itemTextStyle={styles.itemTextStyle}
-        style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
-        placeholderStyle={[
-          styles.placeholderStyle,
-          { marginLeft: props.marginLeft },
-          isFocus && { color: "blue" },
-        ]}
-        selectedTextStyle={[
-          styles.placeholderStyle,
-          { marginLeft: props.marginLeft },
-          isFocus && { color: "blue" },
-        ]}
-        inputSearchStyle={styles.inputSearchStyle}
-        iconStyle={styles.iconStyle}
-        iconColor="black"
-        data={props.data}
-        search
-        maxHeight={300}
-        labelField="label"
-        valueField="value"
-        placeholder={props.menuLabel}
-        searchPlaceholder="Szukaj..."
-        // value={value}
-        onFocus={() => {
-          setIsFocus(true);
-          console.log("GYM FILTER FOCUSED");
-        }}
-        onBlur={() => setIsFocus(false)}
-        // onChange={(item) => {
-        //   setValue(item.value);
-        //   setIsFocus(false);
-        // }}
-        onChange={props.handleGymChange}
-        value={props.selectedGym}
-      />
-    </View>
+    <Dropdown
+      style={[styles.dropdown, isFocus && { borderColor: lightMode.text }]}
+      disable={props.disable}
+      itemTextStyle={styles.itemTextStyle}
+      itemContainerStyle={styles.itemContainerStyle}
+      placeholderStyle={[
+        styles.placeholderStyle,
+        { marginLeft: props.marginLeft },
+        isFocus && { color: lightMode.text },
+      ]}
+      selectedTextStyle={[
+        styles.placeholderStyle,
+        { marginLeft: props.marginLeft },
+        isFocus && { color: lightMode.text },
+      ]}
+      inputSearchStyle={styles.inputSearchStyle}
+      searchPlaceholderTextColor={lightMode.textMuted}
+      iconStyle={styles.iconStyle}
+      iconColor={isFocus ? lightMode.text : lightMode.textMuted}
+      data={props.data}
+      search
+      maxHeight={300}
+      labelField="label"
+      valueField="value"
+      placeholder={props.menuLabel}
+      searchPlaceholder="Szukaj..."
+      onFocus={() => {
+        setIsFocus(true);
+        console.log("GYM FILTER FOCUSED");
+      }}
+      onBlur={() => setIsFocus(false)}
+      onChange={props.handleGymChange}
+      value={props.selectedGym}
+    />
   );
 };
 
 export default GymFilter;
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
-  },
-  dropDownContainerStyle: {
-    borderRadius: 8,
-  },
-
   dropdown: {
     height: 60,
     width: 90,
-    borderColor: "black",
-    borderWidth: 2,
+    backgroundColor: lightMode.bgLight,
+    borderWidth: 1,
+    borderColor: lightMode.textMuted,
     borderRadius: 8,
+  },
+  dropDownContainerStyle: {
+    backgroundColor: "pink",
   },
   icon: {
     marginRight: 10,
@@ -93,6 +86,7 @@ const styles = StyleSheet.create({
     fontFamily: "BarlowCondensed-Light",
   },
   placeholderStyle: {
+    color: lightMode.textMuted,
     fontSize: 20,
     fontFamily: "BarlowCondensed-SemiBold",
     marginBottom: 3,
@@ -111,9 +105,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "BarlowCondensed-Light",
     borderRadius: 8,
+    // backgroundColor: "purple",
   },
   itemTextStyle: {
     fontSize: 20,
     fontFamily: "BarlowCondensed-Regular",
+    color: lightMode.textMuted,
+  },
+  itemContainerStyle: {
+    backgroundColor: lightMode.bgLight,
   },
 });

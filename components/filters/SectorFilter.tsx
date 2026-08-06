@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
+import lightMode from "../../styles/theme";
 
 //* SectorFilterProps = list of props (key-value pairs) that are passed to component from PARENT?
 type SectorFilterProps = {
@@ -19,67 +20,62 @@ const SectorFilter = (props: SectorFilterProps) => {
   const [isFocus, setIsFocus] = useState(false); //* gym filter inner state
 
   return (
-    <View style={styles.container}>
-      {/* {renderLabel()} */}
-      <Dropdown
-        disable={props.disable}
-        containerStyle={styles.dropDownContainerStyle}
-        itemTextStyle={styles.itemTextStyle}
-        style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
-        placeholderStyle={[
-          styles.placeholderStyle,
-          { marginLeft: props.marginLeft },
-          isFocus && { color: "blue" },
-        ]}
-        selectedTextStyle={[
-          styles.placeholderStyle,
-          { marginLeft: props.marginLeft },
-          isFocus && { color: "blue" },
-        ]}
-        inputSearchStyle={styles.inputSearchStyle}
-        iconStyle={styles.iconStyle}
-        iconColor="black"
-        data={props.data}
-        search
-        maxHeight={300}
-        labelField="label"
-        valueField="value"
-        placeholder={props.menuLabel} //!!!!!!!!!!!!!!!!!!!!!!
-        searchPlaceholder="Szukaj..."
-        // value={value}
-        onFocus={() => {
-          setIsFocus(true);
-          // console.log("focused");
-        }}
-        onBlur={() => setIsFocus(false)}
-        // onChange={(item) => {
-        //   setValue(item.value);
-        //   setIsFocus(false);
-        // }}
-        onChange={props.handleSectorChange}
-        value={props.selectedSector}
-      />
-    </View>
+    <Dropdown
+      style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
+      disable={props.disable}
+      containerStyle={styles.dropDownContainerStyle}
+      itemTextStyle={styles.itemTextStyle}
+      placeholderStyle={[
+        styles.placeholderStyle,
+        { marginLeft: props.marginLeft },
+        isFocus && { color: "blue" },
+      ]}
+      selectedTextStyle={[
+        styles.placeholderStyle,
+        { marginLeft: props.marginLeft },
+        isFocus && { color: "blue" },
+      ]}
+      inputSearchStyle={styles.inputSearchStyle}
+      iconStyle={styles.iconStyle}
+      iconColor="black"
+      data={props.data}
+      search
+      maxHeight={300}
+      labelField="label"
+      valueField="value"
+      placeholder={props.menuLabel} //!!!!!!!!!!!!!!!!!!!!!!
+      searchPlaceholder="Szukaj..."
+      // value={value}
+      onFocus={() => {
+        setIsFocus(true);
+        // console.log("focused");
+      }}
+      onBlur={() => setIsFocus(false)}
+      // onChange={(item) => {
+      //   setValue(item.value);
+      //   setIsFocus(false);
+      // }}
+      onChange={props.handleSectorChange}
+      value={props.selectedSector}
+    />
   );
 };
 
 export default SectorFilter;
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
+  dropdown: {
+    height: 60,
+    width: 90,
+    backgroundColor: lightMode.bgLight,
+    borderWidth: 1,
+    borderColor: lightMode.textMuted,
+    borderRadius: 8,
   },
   dropDownContainerStyle: {
     borderRadius: 8,
   },
 
-  dropdown: {
-    height: 60,
-    width: 90,
-    borderColor: "black",
-    borderWidth: 2,
-    borderRadius: 8,
-  },
   icon: {
     marginRight: 10,
   },
